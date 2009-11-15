@@ -1,0 +1,5 @@
+TODO 15-11-09
+- install dependencies on ubuntu vm
+- pass "-usb -usbdevice `dmesg | grep "Brain" | egrep -o ":[0-9]{4}:[0-9]{4}." | sed 's/^:\|\.$//g'" to qemu-system-x86_64
+- run Triathlon
+- tell Triathlon developers that a git repository has been created
