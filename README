@@ -38,3 +38,5 @@ Warning: you need an account with sourceforge to access some parts of the wiki.
 :Triathlon-thread in OCZ NIA forum:
 http://www.ocztechnologyforum.com/forum/showthread.php?t=63090
 
+__SVN repository__
+svn co https://triathlon.svn.sourceforge.net/svnroot/triathlon triathlon 

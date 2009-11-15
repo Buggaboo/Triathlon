@@ -1,0 +1,13 @@
+From the command line you need the "-usb" and "-usbdevice" options when starting up your virtual machine like so:
+
+qemu-system-x86_64  -m 400 -hda windows.img -usb -usbdevice  host:1234:5678 
+
+Go to your monitor using Ctrl-Alt-2 and from within the monitor with your usb device connected run the following command to get the id of your usb device.
+
+(qemu) info usbhost
+
+You'll see a list of usb devices connected to your host. Now add your usb device to your guest with the following command.
+
+(qemu) usb_add  host:1234:5678
+
+Your usb device will now show up in your guest virtual machine.
