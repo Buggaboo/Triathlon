@@ -1,0 +1,40 @@
+__Dependencies__
+
+:python:
+The programming language
+
+:wxwidgets:
+The gui library
+
+:wxpython:
+The glue between wxwidgets and python
+
+:python-mdp:
+No idea...
+
+:python-opengl:
+The glue between python and opengl, probably for graphs
+
+:python-xlib:
+The glue for the X windowing system and python
+
+:swig:
+SWIG is a programmer's tool designed to make it easier to use C and C++ code from other popular programming languages such as Python, Perl, Ruby, PHP, Java, and C#.
+
+:numpy:
+Library for mathematical calculations.
+
+__Install from ubuntu__
+
+Type the following in a shell:
+sudo apt-get install python-numpy python-usb python-wxgtk2.8 wx-common python-wxaddons python-mdp python-opengl python-xlib swig
+
+__Website__
+
+:Wiki:
+https://sourceforge.net/apps/mediawiki/triathlon/index.php?title=Main_Page
+Warning: you need an account with sourceforge to access some parts of the wiki.
+
+:Triathlon-thread in OCZ NIA forum:
+http://www.ocztechnologyforum.com/forum/showthread.php?t=63090
+
