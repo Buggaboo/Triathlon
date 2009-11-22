@@ -1,5 +1,12 @@
+TODO 22-11-09
++ test 'glxgears' and 'glxinfo | grep direct | grep -o Yes' under vm
+  => it works
+- set udev rules to allow usb direct read access, so 'sudo' will not be necessary to run triathlon
++ must run image as 'sh start-tap.sh images/vdisk-linux-ubuntuserver.img tap0 e1000 "-usb -usbdevice host:1234:0000"'
+  => to run with pass host usb to vm guest, add_usb in vm command line does not register device
+
 TODO 15-11-09
-- install dependencies on ubuntu vm
-- pass "-usb -usbdevice `dmesg | grep "Brain" | egrep -o ":[0-9]{4}:[0-9]{4}." | sed 's/^:\|\.$//g'" to qemu-system-x86_64
-- run Triathlon
++ install dependencies on ubuntu vm
++ pass "-usb -usbdevice `dmesg | grep "Brain" | egrep -o ":[0-9]{4}:[0-9]{4}." | sed 's/^:\|\.$//g'" to qemu-system-x86_64
++ run Triathlon => failed to run.
 - tell Triathlon developers that a git repository has been created
