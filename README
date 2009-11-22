@@ -1,3 +1,5 @@
+16-11-09
+
 __Dependencies__
 
 :python:
@@ -24,10 +26,18 @@ SWIG is a programmer's tool designed to make it easier to use C and C++ code fro
 :numpy:
 Library for mathematical calculations.
 
+:pyfann:
+Fast neural network library.
+The pyfann python bindings to fann must be installed manually (http://www.ocztechnologyforum.com/forum/showpost.php?p=441769&postcount=8).
+Download stuff here: http://leenissen.dk/fann/download.php
+
+
 __Install from ubuntu__
 
 Type the following in a shell:
-sudo apt-get install python-numpy python-usb python-wxgtk2.8 wx-common python-wxaddons python-mdp python-opengl python-xlib swig
+sudo apt-get install python-dev python-numpy python-usb \
+  python-wxgtk2.8 wx-common python-wxaddons python-mdp \
+  python-opengl python-xlib swig libfann1-dev -y
 
 __Website__
 
