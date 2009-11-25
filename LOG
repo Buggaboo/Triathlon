@@ -1,3 +1,8 @@
+LOG 25-11-09
+* Use 'python -m pdb script.py -c "noGL = True"', to run the python debugger
+* Hmmmm... -c doesn't work, but changing the parameter in the script does. You get the wx analyzer screen without opengl of course.
+* I could have known that the cause of the crash would be opengl...
+
 LOG 22-11-09
 * Tried to get it to run in a ubuntu vm, but failed miserably due to a segfault.
 * Will attempt to run valgrind on the fucker. 'sudo python Triathlon-Auditor.py' will segfault it.

@@ -1,5 +1,12 @@
 TODO 25-11-09
-- run python debugger pydb on the project
++ run python debugger pydb on the project
+  => I wasn't patient enough trace the last call prior to the segfault
++ run pdb again, with noGL = False, trace the last call before segfault
+  => opengl causes the crash in the vm guest no doubt about it
++ but running 'sudo gdb python' gave me a good error though:
+  => Program received signal SIGSEGV, Segmentation fault.
+  => [Switching to Thread 0xb7d236c0 (LWP 4487)]
+  => 0xb552ab46 in glLightfv () from /usr/lib/libGL.so.1
 
 TODO 22-11-09
 - figure out if my pull from the svn is the latest
