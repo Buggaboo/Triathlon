@@ -37,7 +37,7 @@ __Install from ubuntu__
 Type the following in a shell:
 sudo apt-get install python-dev python-numpy python-usb \
   python-wxgtk2.8 wx-common python-wxaddons python-mdp \
-  python-opengl python-xlib swig libfann1-dev -y
+  python-opengl python-xlib swig -y
 
 __Website__
 
