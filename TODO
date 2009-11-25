@@ -7,6 +7,10 @@ TODO 25-11-09
   => not in sbo.org: python-mdp (ai), SWIG, fann, pyfann
 - write slackbuilds for each missing slackbuild component
 - apply for adding components to sbo.org
+- build valgrind and kcachegrind and installpkg
+- get ccache to work
+- get icec or distcc
+- get both to work
 + run python debugger pydb on the project
   => I wasn't patient enough trace the last call prior to the segfault
 + run pdb again, with noGL = False, trace the last call before segfault
