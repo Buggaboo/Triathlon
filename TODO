@@ -1,4 +1,12 @@
 TODO 25-11-09
+- must document how to get project up and running in slackware64
+  => * build all dependencies...
+  => * create group, give sudoer rights... for access to raw input
+- must maintain all project dependencies and slackbuilds not in sbo.org
+  => sbo.org: wxwidgets (must have: common and addons), wxpython, pyopengl, python-xlib, numpy, pyusb
+  => not in sbo.org: python-mdp (ai), SWIG, fann, pyfann
+- write slackbuilds for each missing slackbuild component
+- apply for adding components to sbo.org
 + run python debugger pydb on the project
   => I wasn't patient enough trace the last call prior to the segfault
 + run pdb again, with noGL = False, trace the last call before segfault
