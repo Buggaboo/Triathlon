@@ -13,3 +13,16 @@ Install and build in this sequence
   http://downloads.sourceforge.net/numpy/numpy-1.3.0.tar.gz 
   http://downloads.sourceforge.net/scipy/scipy-0.7.0.tar.gz
   http://downloads.sourceforge.net/mdp-toolkit/MDP-2.5.tar.gz
+
+These will compile without additional dependencies
+
+  blas-3.2.1-x86_64-1_SBo.tgz
+  fftw-3.2.1-custom-2_SBo.tgz
+  lapack-3.2.1-x86_64-1_SBo.tgz
+  pysetuptools-0.6c9-x86_64-1_SBo.tgz
+  python-xlib-0.14-x86_64-1_SBo.tgz
+  pyusb-0.4.1-x86_64-1_SBo.tgz
+  swig-1.3.40-x86_64-1_SBo.tgz
+
+This will require pysetuptools:
+  PyOpenGL
