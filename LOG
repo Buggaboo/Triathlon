@@ -1,3 +1,8 @@
+LOG 28-11-09
+* Today I started gathering all the dependencies for this project to work on a slackware 13.0 machine.
+* I increased my /tmp to 1gb for building wxwidgets, what a big -ing project. Building on memory is infinitely faster than distcc or ccache can throw at it. But use ccache anyhow! tmpfs            /tmp             tmpfs       size=1024M         0 0
+* Before installing on the main system I should check the packages on a virtual machine see if anything gets fuxxxored.
+
 LOG 25-11-09
 * Use 'python -m pdb script.py -c "noGL = True"', to run the python debugger
 * Hmmmm... -c doesn't work, but changing the parameter in the script does. You get the wx analyzer screen without opengl of course.

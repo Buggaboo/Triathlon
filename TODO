@@ -1,3 +1,21 @@
+TODO 28-11-09
+- build all dependencies
+- swig slackbuild probably does not have a arch for 64
+- finish fann.SlackBuild
+  - doinst.sh
+  - fann.info
+  - slack-desc
+  - README
+  - check for any patches, incorporate in SlackBuild
+  - date slackbuild
+- finish mdp.SlackBuild
+  - doinst.sh
+  - fann.info
+  - slack-desc
+  - README
+  - check for any patches, incorporate in SlackBuild
+  - date slackbuild
+
 TODO 25-11-09
 - must document how to get project up and running in slackware64
   => * build all dependencies...
