@@ -1,4 +1,5 @@
 LOG 28-11-09
+* PyOpenGL depends on pysetuptools
 * The wx build is over 1 gigabyte.
 * There's a good chance that the wxpython slackbuild here will subsume the normal wxwidget build; the readme states this possibility to be likely.
 * Today I started gathering all the dependencies for this project to work on a slackware 13.0 machine.
