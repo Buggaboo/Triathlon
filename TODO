@@ -1,4 +1,5 @@
 TODO 28-11-09
+- determine whether wxpython subsumes wxgtk
 - create a slackbuild for pyfann after installing fann
 - copy the slackbuild of some other pythonlib
 - build all dependencies

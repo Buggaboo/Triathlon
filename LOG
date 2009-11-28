@@ -1,4 +1,5 @@
 LOG 28-11-09
+* There's a good chance that the wxpython slackbuild here will subsume the normal wxwidget build; the readme states this possibility to be likely.
 * Today I started gathering all the dependencies for this project to work on a slackware 13.0 machine.
 * I increased my /tmp to 1gb for building wxwidgets, what a big -ing project. Building on memory is infinitely faster than distcc or ccache can throw at it. But use ccache anyhow! tmpfs            /tmp             tmpfs       size=1024M         0 0
 * Before installing on the main system I should check the packages on a virtual machine see if anything gets fuxxxored.
