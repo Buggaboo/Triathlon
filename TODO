@@ -1,5 +1,6 @@
 TODO 28-11-09
-- determine whether wxpython subsumes wxgtk
+- determine which packages have no external dependencies, put them in a list
++ determine whether wxpython subsumes wxgtk => yes
 - create a slackbuild for pyfann after installing fann
 - copy the slackbuild of some other pythonlib
 - build all dependencies
