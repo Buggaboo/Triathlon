@@ -31,6 +31,6 @@ $(which wget) -c -nd -nH \
   http://downloads.sourceforge.net/scipy/scipy-0.7.0.tar.gz
 
 # These scripts require some minor modification, like version number etc.
-wget -c -nd -nH \
+$(which wget) -c -nd -nH \
   http://slackbuilds.org/slackbuilds/12.2/development/swig.tar.gz \
   http://downloads.sourceforge.net/swig/swig-1.3.40.tar.gz
