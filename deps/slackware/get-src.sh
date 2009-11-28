@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e -x
+#set -e -x
 
 GREP=$(which grep)
 WGET=$(which wget)
