@@ -1,0 +1,11 @@
+PRGNAM="mdp"
+VERSION="2.5"
+HOMEPAGE="http://mdp-toolkit.sourceforge.net/index.html"
+DOWNLOAD="http://sourceforge.net/projects/mdp-toolkit/files/mdp-toolkit/2.5/MDP-2.5.tar.gz/download"
+MD5SUM="da0e53040b596f0f7d128c9b60db48d1"
+DOWNLOAD_x86_64=""
+MD5SUM_x86_64=""
+MAINTAINER="Buggaboo"
+EMAIL="buggasnoo@gmail.com"
+APPROVED=""
+
