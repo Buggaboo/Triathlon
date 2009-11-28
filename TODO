@@ -1,4 +1,6 @@
 TODO 28-11-09
+- create a slackbuild for pyfann after installing fann
+- copy the slackbuild of some other pythonlib
 - build all dependencies
 - swig slackbuild probably does not have a arch for 64
 - finish fann.SlackBuild
