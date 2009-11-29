@@ -1,3 +1,6 @@
+LOG 30-11-09
+* Fugging pyfann.SlackBuild generates an error right after the fann.SlackBuild's resulting .tgz is installed. The error is in the debug/.
+
 LOG 28-11-09
 * PyOpenGL depends on pysetuptools
 * The wx build is over 1 gigabyte.
