@@ -62,6 +62,7 @@ make install DESTDIR=$PKG
 )
 
 # TODO - do these things actually exist to copy?
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION $PKG/usr/man
 cp -a \
   AUTHORS COPYING ChangeLog NEWS README TODO \
     $PKG/usr/doc/$PRGNAM-$VERSION
