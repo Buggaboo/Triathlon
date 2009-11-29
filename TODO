@@ -1,17 +1,18 @@
 TODO 28-11-09
-- install slackware vm guest
-  - x86_64
+- figure out how to use patch in pyfann.SlackBuild
++ install slackware vm guest
+  + x86_64
   - x86
-- determine which packages have no external dependencies, put them in a list
++ determine which packages have no external dependencies, put them in a list
 + determine whether wxpython subsumes wxgtk => yes
-- create a slackbuild for pyfann after installing fann
-- copy the slackbuild of some other pythonlib
-- build all dependencies
-- swig slackbuild probably does not have a arch for 64
++ create a slackbuild for pyfann after installing fann
++ copy the slackbuild of some other pythonlib
++ build all dependencies
++ swig slackbuild probably does not have a arch for 64
 - finish fann.SlackBuild
   - doinst.sh
-  - fann.info
-  - slack-desc
+  + fann.info
+  + slack-desc
   - README
   - check for any patches, incorporate in SlackBuild
   - date slackbuild
