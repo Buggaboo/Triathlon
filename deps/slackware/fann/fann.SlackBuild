@@ -49,6 +49,12 @@ CXXFLAGS="$SLKCFLAGS" \
 make
 make install DESTDIR=$PKG
 
+cd python
+
+#TODO - put the following two lines in its own SlackBuild
+#python setup.py build
+#python setup.py install --root $PKG
+
 ( cd $PKG
   find . | xargs file | grep "executable" | grep ELF | cut -f 1 -d : | \
     xargs strip --strip-unneeded 2> /dev/null
@@ -74,3 +80,6 @@ cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+
+echo 'Install the resulting .tgz file, \
+  then run the pyfann.SlackBuild immediately!'
