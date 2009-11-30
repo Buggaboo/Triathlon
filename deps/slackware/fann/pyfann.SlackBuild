@@ -34,6 +34,8 @@ cd $PRGNAM-$VERSION
 
 cd python
 
+patch -p1 < $CWD/pyfann.patch
+
 python setup.py build
 python setup.py install --root $PKG
 
