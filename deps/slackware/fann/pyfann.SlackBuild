@@ -30,6 +30,12 @@ fi
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
+
+if ! [ -d "$PRGNAM-$VERSION" ]; then
+  echo "Please run fann.SlackBuild first."
+  exit 1
+fi
+
 cd $PRGNAM-$VERSION
 
 cd python
@@ -46,12 +52,15 @@ python setup.py install --root $PKG
     xargs strip --strip-unneeded 2> /dev/null
 )
 
-( cd $PKG/usr/man
-  find . -type f -exec gzip -9 {} \;
-  for i in $(find . -type l) ; do ln -s $(readlink $i).gz $i.gz ; rm $i ; done
-)
+#( cd $PKG/usr/man
+#  find . -type f -exec gzip -9 {} \;
+#  for i in $(find . -type l) ; do ln -s $(readlink $i).gz $i.gz ; rm $i ; done
+#)
 
-cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+mkdir -p $PKG/usr/doc/$PKGNAM-$VERSION/
+
+cat $CWD/$PKGNAM.SlackBuild > $PKG/usr/doc/$PKGNAM-$VERSION/$PKGNAM.SlackBuild
+cat $CWD/pyfann.patch > $PKG/usr/doc/$PKGNAM-$VERSION/pyfann.patch
 
 cd $PKG
 
