@@ -2,11 +2,12 @@ TODO 10-11-09
 + fork Triathlon project alongside modified code
 - Check whether Triathlon-... works
   - Auditor (Calibrator doesn't seem to do anything)
-  + Breeder complains about nasty dependency error
+  - Breeder complains about nasty dependency error
     => from pyfann import libfann;dir(libfann) # reveals FANN_TRAIN_RPROP
     => not TRAIN_RPROP
-  + change this to own version
-  - created patch
+    => the original maintainers might be using fann 1.2.0, the nomenclature has been changed in 2.0.0
+    - fix the code
+  - create patch
   - give patch to main maintainer
 """
 Traceback (most recent call last):
@@ -47,8 +48,6 @@ OpenGL.error.GLError: GLError(
 	cArguments = (2, GL_FLOAT, 0, c_void_p(44900896))
 )
 """
-
-  
 + fix the udev permissions so pyusb can access the device
   + testing
 - check on all slackbuilds, see if stuff can be added
@@ -60,7 +59,7 @@ OpenGL.error.GLError: GLError(
 
 TODO 28-11-09
 + figure out how to use patch in pyfann.SlackBuild
-  => diff -uR file.old file.new > file.patch
+  => diff -ur file.old file.new > file.patch
   => diff -rupN path.old/ path.new > path.patch
   => patch -p1 < file.patch
 + install slackware vm guest
