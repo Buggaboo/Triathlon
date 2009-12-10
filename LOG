@@ -1,3 +1,7 @@
+LOG 10-12-09
+* The last slackbuild has been created. Testing software on x86_64 machine.
+* Last challenge: allow normal user to access usb device using udev rule in ./etc/udev/rules.d/
+
 LOG 30-11-09
 * Fugging pyfann.SlackBuild generates an error right after the fann.SlackBuild's resulting .tgz is installed. The error is in the debug/.
 * Luckily I found the cause of the error, the missing file 'doublefann.o' is under /tmap/SBo/fann-2.0.0/src/.libs/doublefann.o, some dickhead forgot the all the compiled object files will land inside .libs, a hidden path too.

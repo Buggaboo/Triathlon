@@ -1,5 +1,10 @@
 TODO 10-11-09
 - fix the udev permissions so pyusb can access the device
+  - testing
+- check on all slackbuilds, see if stuff can be added
+  * info file etc.
+- write short documentation on how to get udev rule to work
+  - test
 
 TODO 28-11-09
 + figure out how to use patch in pyfann.SlackBuild
