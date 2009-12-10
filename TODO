@@ -1,5 +1,11 @@
+TODO 10-11-09
+- fix the udev permissions so pyusb can access the device
+
 TODO 28-11-09
-- figure out how to use patch in pyfann.SlackBuild
++ figure out how to use patch in pyfann.SlackBuild
+  => diff -uR file.old file.new > file.patch
+  => diff -rupN path.old/ path.new > path.patch
+  => patch -p1 < file.patch
 + install slackware vm guest
   + x86_64
   - x86

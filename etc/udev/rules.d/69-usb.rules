@@ -1,0 +1,2 @@
+# Giving the user complete and total control over device
+SYSFS{idVendor}=="1234", SYSFS{idProduct}=="0000", MODE="660", GROUP="plugdev", OWNER="user"
