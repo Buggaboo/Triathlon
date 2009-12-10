@@ -1,13 +1,19 @@
 TODO 10-11-09
+- find replacements for the following functions
+  - Triathlon-Breeder.py:58:        self.trainingData = libfann.training_data() -> to get_train_data_input or fann_train or fann_train_data
+  @ Triathlon-Breeder.py:60:        self.testData = libfann.training_data() -> idem
+  - Triathlon-Breeder.py:155:            self.ann = libfann.neural_net()
+  - Triathlon-Player.py:554:            ann = libfann.neural_net()
+  @ grabbed with -> clear && grep -n "libfann.[a-z_]\+" *.p
 + fork Triathlon project alongside modified code
 - Check whether Triathlon-... works
   - Auditor (Calibrator doesn't seem to do anything)
-  - Breeder complains about nasty dependency error
+  + Breeder complains about nasty dependency error
     => from pyfann import libfann;dir(libfann) # reveals FANN_TRAIN_RPROP
     => not TRAIN_RPROP
     => the original maintainers might be using fann 1.2.0, the nomenclature has been changed in 2.0.0
     - fix the code
-  - create patch
+  @ create patch => Not necessary
   - give patch to main maintainer
 """
 Traceback (most recent call last):

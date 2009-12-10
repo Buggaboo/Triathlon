@@ -59,9 +59,9 @@ class AppSettings():
         self.trainingData.read_train_from_file(datafile+".train")
         self.testData = libfann.training_data()
         self.testData.read_train_from_file(datafile+".test")
-        self.flist = [libfann.LINEAR,libfann.SIGMOID,libfann.SIGMOID_STEPWISE,libfann.SIGMOID_SYMMETRIC,libfann.SIGMOID_SYMMETRIC_STEPWISE,
-                      libfann.GAUSSIAN,libfann.GAUSSIAN_SYMMETRIC,libfann.ELLIOT,libfann.ELLIOT_SYMMETRIC,libfann.LINEAR_PIECE,
-                      libfann.LINEAR_PIECE_SYMMETRIC,libfann.SIN_SYMMETRIC,libfann.COS_SYMMETRIC]
+        self.flist = [libfann.FANN_LINEAR,libfann.FANN_SIGMOID,libfann.FANN_SIGMOID_STEPWISE,libfann.FANN_SIGMOID_SYMMETRIC,libfann.FANN_SIGMOID_SYMMETRIC_STEPWISE,
+                      libfann.FANN_GAUSSIAN,libfann.FANN_GAUSSIAN_SYMMETRIC,libfann.FANN_ELLIOT,libfann.FANN_ELLIOT_SYMMETRIC,libfann.FANN_LINEAR_PIECE,
+                      libfann.FANN_LINEAR_PIECE_SYMMETRIC,libfann.FANN_SIN_SYMMETRIC,libfann.FANN_COS_SYMMETRIC]
         self.mutationlist = ["change_connection_rate",
                         "change_learning_rate",
                         "change_num_neurons_hidden",
@@ -125,7 +125,7 @@ class NeuralNet():
                  learning_rate      = 0.5,
                  max_iterations     = 50,
                  bornBefore         = 0,
-                 trainAlg           = libfann.TRAIN_RPROP,
+                 trainAlg           = libfann.FANN_TRAIN_RPROP,
                  learning_momentum  = 0.0,
                  neurons            = [],
                  connectionType     = "Sparse"):
@@ -226,13 +226,13 @@ class NeuralNet():
         elif mutation ==  "change_training_algorithm":
             p = random.random()
             if p < 0.25:
-                self.trainAlg = libfann.TRAIN_BATCH
+                self.trainAlg = libfann.FANN_TRAIN_BATCH
             elif p < 0.5:
-                self.trainAlg = libfann.TRAIN_RPROP
+                self.trainAlg = libfann.FANN_TRAIN_RPROP
             elif p < 0.75:
-                self.trainAlg = libfann.TRAIN_INCREMENTAL
+                self.trainAlg = libfann.FANN_TRAIN_INCREMENTAL
             else:
-                self.trainAlg = libfann.TRAIN_QUICKPROP
+                self.trainAlg = libfann.FANN_TRAIN_QUICKPROP
         elif mutation ==  "change_activation_function_hidden":
                 layerIndex = random.randrange(len(self.neurons)-1)
                 neuronIndex = random.randrange(len(self.neurons[layerIndex]))
