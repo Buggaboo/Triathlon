@@ -1,10 +1,61 @@
 TODO 10-11-09
-- fix the udev permissions so pyusb can access the device
-  - testing
+- fork Triathlon project alongside modified code
+- Check whether Triathlon-... works
+  - Auditor (Calibrator doesn't seem to do anything)
+  + Breeder complains about nasty dependency error
+    => from pyfann import libfann;dir(libfann) # reveals FANN_TRAIN_RPROP
+    => not TRAIN_RPROP
+  - change this to own version
+  - give patch to main maintainer
+"""
+Traceback (most recent call last):
+  File "Triathlon-Breeder.py", line 120, in <module>
+    class NeuralNet():
+  File "Triathlon-Breeder.py", line 128, in NeuralNet
+    trainAlg           = libfann.TRAIN_RPROP,
+AttributeError: 'module' object has no attribute 'TRAIN_RPROP'
+"""
+  - Player
+    => Complains that there are no settings files
+  - Analyzer
+    => Spectogram seems to be horribly broken for some reason
+    - find out reason
+"""
+Traceback (most recent call last):
+  File "Triathlon-Analyzer.py", line 464, in NiaUpdate
+    self.spectogramCanvas.newReading()
+  File "Triathlon-Analyzer.py", line 263, in newReading
+    self.OnDraw()
+  File "Triathlon-Analyzer.py", line 251, in OnDraw
+    glColorPointerf(self.spectralColorColumHistory[historyIndex])
+  File "/usr/lib64/python2.6/site-packages/OpenGL/wrapper.py", line 343, in wrapperCall
+    raise err
+OpenGL.error.GLError: GLError(
+	err = 1281,
+	description = 'invalid value',
+	baseOperation = glColorPointer,
+	pyArgs = [
+		array([[[ 1.        ,  1.        ,  1...
+	],
+	cArgs = [
+		2,
+		GL_FLOAT,
+		0,
+		array([[[ 1.        ,  1.        ,  1...
+	],
+	cArguments = (2, GL_FLOAT, 0, c_void_p(44900896))
+)
+"""
+
+  
++ fix the udev permissions so pyusb can access the device
+  + testing
 - check on all slackbuilds, see if stuff can be added
   * info file etc.
-- write short documentation on how to get udev rule to work
-  - test
++ write short documentation on how to get udev rule to work
+  => copy 69-usb.rules to /etc/udev/rules.d
+  => change the OWNER="user" to whatever `whoami` returns
+  => replug ocz nia
 
 TODO 28-11-09
 + figure out how to use patch in pyfann.SlackBuild

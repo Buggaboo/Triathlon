@@ -1,5 +1,6 @@
 *.tar.*
 *.tgz
+*.txz
 .svn*
 *.pyc
 *~

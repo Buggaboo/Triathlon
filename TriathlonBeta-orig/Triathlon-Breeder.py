@@ -125,7 +125,7 @@ class NeuralNet():
                  learning_rate      = 0.5,
                  max_iterations     = 50,
                  bornBefore         = 0,
-                 trainAlg           = libfann.FANN_TRAIN_RPROP,
+                 trainAlg           = libfann.TRAIN_RPROP,
                  learning_momentum  = 0.0,
                  neurons            = [],
                  connectionType     = "Sparse"):
@@ -228,7 +228,7 @@ class NeuralNet():
             if p < 0.25:
                 self.trainAlg = libfann.TRAIN_BATCH
             elif p < 0.5:
-                self.trainAlg = libfann.FANN_TRAIN_RPROP
+                self.trainAlg = libfann.TRAIN_RPROP
             elif p < 0.75:
                 self.trainAlg = libfann.TRAIN_INCREMENTAL
             else:
