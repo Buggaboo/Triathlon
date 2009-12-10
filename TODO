@@ -1,11 +1,12 @@
 TODO 10-11-09
-- fork Triathlon project alongside modified code
++ fork Triathlon project alongside modified code
 - Check whether Triathlon-... works
   - Auditor (Calibrator doesn't seem to do anything)
   + Breeder complains about nasty dependency error
     => from pyfann import libfann;dir(libfann) # reveals FANN_TRAIN_RPROP
     => not TRAIN_RPROP
-  - change this to own version
+  + change this to own version
+  - created patch
   - give patch to main maintainer
 """
 Traceback (most recent call last):
