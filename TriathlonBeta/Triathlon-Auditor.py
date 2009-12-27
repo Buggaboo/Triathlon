@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: iso-8859-1 -*-
 
 # Howto, Code license, Credits, etc: http://code.google.com/B/BCI-Project-Triathlon/
 
@@ -42,8 +43,9 @@ class Collected_Data():
     def __init__(self):
         self.trainingMode = False
         self.currentReducedSample = []
-        self.currentLabel = [0.0 for each in xrange(len(profile.channels))]
-        self.dataClusters = [([],[]) for each in profile.channels]
+        lenpcs = len(profile.channels)
+        self.currentLabel = lenpcs*[0.0]
+        self.dataClusters = lenpcs*[([],[])]
 
 class OutputChannel():
     def __init__(self,
@@ -66,6 +68,7 @@ class InputCondition():
         self.mouseMove = mouseMove
         self.mouseMoveDir = mouseMoveDir
         self.code = code
+        
     def isTrue(self,lastMousePos=(0,0), currentMousePos=(0,0)):
         if self.mouseButton:
             if self.code == 0:
@@ -76,13 +79,13 @@ class InputCondition():
                 return wx.GetMouseState().middleDown
         elif self.mouseMove:
             if self.mouseMoveDir == "up":
-                return ((currentMousePos[1]-lastMousePos[1]) < -2 )
+                return currentMousePos[1]-lastMousePos[1] < -2
             elif self.mouseMoveDir == "down":
-                return ((currentMousePos[1]-lastMousePos[1]) > 2 )
+                return currentMousePos[1]-lastMousePos[1] > 2
             elif self.mouseMoveDir == "left":
-                return ((currentMousePos[0]-lastMousePos[0]) < -2 )
+                return currentMousePos[0]-lastMousePos[0] < -2
             else:
-                return ((currentMousePos[0]-lastMousePos[0]) > 2 )
+                return currentMousePos[0]-lastMousePos[0] > 2
         else:
             return wx.GetKeyState(self.code)
 
@@ -242,12 +245,15 @@ class ChannelPanel(wx.Panel):
         panelSizer.Add(self.channelHighConditionChoice, 0, wx.ALIGN_CENTER, 5)
         panelSizer.Add(wx.StaticText(self,label=" "), 0, wx.ALIGN_CENTER, 5)
         self.SetSizer(panelSizer)
+        
     def includedChanged(self, event):
         self.GetGrandParent().channelsChanged()
         event.Skip()
+        
     def allSamplesChanged(self, event):
         self.GetGrandParent().channelsChanged()
         event.Skip()
+        
     def conditionChanged(self, event):
         self.GetGrandParent().channelsChanged()
         event.Skip()
@@ -350,7 +356,7 @@ class SettingPanel(wx.Panel):
         qfPanel.SetSizer(qfSizer)
         channelsNotebook = wx.Notebook(self)
         self.channelPannels = []
-        for channelIndex in range(len(settings.availableChannels)):
+        for channelIndex in xrange(len(settings.availableChannels)):
             self.channelPannels.append(ChannelPanel(channelsNotebook,channelIndex))
             channelsNotebook.AddPage(self.channelPannels[channelIndex], settings.availableChannels[channelIndex].channelName)
         panelSizer.AddGrowableCol(0)
@@ -372,14 +378,17 @@ class SettingPanel(wx.Panel):
         panelSizer.Add(wx.StaticText(self,label=" "), 0, wx.ALIGN_CENTER, 5)
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
+        
     def Accept(self, event):
         label = self.flowChoice.GetStringSelection()
         profile.dimensionReductionFlowLabel = label
         profile.dimensionReductionFlow = eval(settings.dimensionReducerFlows[label])
-        collected.currentLabel = [0.0 for each in xrange(len(profile.channels))]
-        collected.dataClusters = [([],[]) for each in profile.channels]
+        lenpcs = len(profile.channels)
+        collected.currentLabel = lenpcs*[0.0]
+        collected.dataClusters = lenpcs*[([],[])]
         self.GetGrandParent().GetParent().enterTraining()
         event.Skip()
+        
     def tailChanged(self, event):
         val = 0
         try:
@@ -394,6 +403,7 @@ class SettingPanel(wx.Panel):
         self.tailField.SetValue(str(val))
         self.GetGrandParent().GetParent().visualizationPanel.resetReading()
         event.Skip()
+        
     def fpsChanged(self, event):
         val = 0
         try:
@@ -411,6 +421,7 @@ class SettingPanel(wx.Panel):
         self.GetGrandParent().GetParent().timer.Start(int(1000.0/profile.niaFPS))
         self.GetGrandParent().GetParent().visualizationPanel.resetReading()
         event.Skip()
+        
     def freqChanged(self, event):
         fr = 0
         try:
@@ -443,6 +454,7 @@ class SettingPanel(wx.Panel):
         profile.freqRange = (fr,to)
         self.GetGrandParent().GetParent().visualizationPanel.resetReading()
         event.Skip()
+        
     def flowTrainSizeChanged(self, event):
         si = 0
         try:
@@ -454,6 +466,7 @@ class SettingPanel(wx.Panel):
         profile.flowTrainingChunckSize = si
         self.flowField.SetValue(str(si))
         event.Skip()
+        
     def clusterSizeChanged(self, event):
         si = 0
         try:
@@ -465,6 +478,7 @@ class SettingPanel(wx.Panel):
         profile.trainingClusterSize = si
         self.clusterField.SetValue(str(si))
         event.Skip()
+        
     def testSizeChanged(self, event):
         si = 0
         try:
@@ -476,12 +490,14 @@ class SettingPanel(wx.Panel):
         profile.testClusterSize = si
         self.testclusterField.SetValue(str(si))
         event.Skip()
+        
     def nameChanged(self, event):
         if (self.nameField.GetValue()!=''):
                 profile.profileName = self.nameField.GetValue()
         else:
                 self.nameField.SetValue(profile.profileName)
         event.Skip()
+        
     def channelsChanged(self):    
         newChannels=[]
         atLeastOne=False
@@ -525,9 +541,11 @@ class SettingPanel(wx.Panel):
             newChannels[0].allSamples = True
         profile.channels = newChannels
         self.GetGrandParent().GetParent().visualizationPanel.resetReading()
+        
     def qfChanged(self, event):
         profile.qfEnabled = self.qfCheckbox.IsChecked()
         event.Skip()
+        
     def qfActioncodeChanged(self, event):
         profile.qfAction = self.qfActionChoice.GetStringSelection()[8:]
         event.Skip()
@@ -558,6 +576,7 @@ class VisualizationPanel(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
        glLoadIdentity()
@@ -635,6 +654,7 @@ class VisualizationPanel(WXElements.GLCanvasBase):
        glVertexPointerf([[-1.0,-1.0+(2.0*profile.qfThreshold)],[1.0,-1.0+(2.0*profile.qfThreshold)]])
        glDrawArrays(GL_LINE_STRIP, 0, 2)
        self.SwapBuffers()
+       
    def newReading(self):
         self.ylists = [bciDevice.frequenciesCombined(profile.freqRange[0],profile.freqRange[1])]+self.ylists[0:profile.timeTailLength]
         self.raw = [ [ float(min(bciDevice.working_Data(0)[-385:-1]))/ float(bciDevice.calibration(0)), 
@@ -643,6 +663,7 @@ class VisualizationPanel(WXElements.GLCanvasBase):
         if self.GetParent().IsShown():
             self.SetCurrent()
             self.OnDraw()
+            
    def resetReading(self):
         self.ylists = [ bciDevice.frequenciesCombined(profile.freqRange[0],profile.freqRange[1])
                        for each in xrange(profile.timeTailLength+1)]
@@ -679,9 +700,11 @@ class ResultPanel(wx.Panel):
         panelSizer.Add(wx.StaticText(self,label=" "), 0, wx.ALIGN_CENTER, 5)
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
+        
     def Cancel(self, event):
         self.GetGrandParent().GetParent().cancelTraining()
         event.Skip()
+        
     def trainingModeSwitching(self, event):
         if collected.trainingMode:
                 collected.trainingMode=False
@@ -690,6 +713,7 @@ class ResultPanel(wx.Panel):
                 bciDevice.calibrateAll()
         niatofannApp.setIcon()
         event.Skip()
+        
     def reset(self):
         self.playPauseButton.SetLabel("      Start Training ( Ctrl F11 )      ")
         self.flowText.SetLabel("Flow Training:")
@@ -750,20 +774,25 @@ class GUIMain(wx.Frame):
         self.timer = wx.Timer(self, wx.ID_ANY)
         self.Bind(wx.EVT_TIMER, self.NiaUpdate, self.timer)
         self.oldMousePos = (wx.GetMouseState().GetX(),wx.GetMouseState().GetY())
+        
     def OnQuit(self, event):
         self.timer.Stop()
         self.Close()
+        
     def OnCalibrate(self, event):
         bciDevice.calibrateAll()
         event.Skip()
+        
     def qfChanged(self, event):
         profile.qfThreshold = (float(30+self.qfThresholdSlider.GetValue())/1060.0)
         event.Skip()
+        
     def enterTraining(self):
         settings.showingTrainingPanel = True
         settings.tStage = 1
         self.resultPanel.reset()
         self.stageNotebook.SetSelection(1)
+        
     def cancelTraining(self):
         settings.showingTrainingPanel = False
         settings.tStage = 0
@@ -773,6 +802,7 @@ class GUIMain(wx.Frame):
         niatofannApp.setIcon()
         collected.currentReducedSample =[]
         collected.dataClusters = [([],[]) for each in profile.channels]
+        
     def NotebookChanged(self, event):
         if settings.tStage == 0:
             if self.stageNotebook.GetSelection() != 0:
@@ -781,6 +811,7 @@ class GUIMain(wx.Frame):
             if self.stageNotebook.GetSelection() != 1:
                 self.stageNotebook.SetSelection(1)
         event.Skip()
+        
     def NiaUpdate(self, ev):
         if bciDevice.deviceType == InputManager.OCZ_NIAx2:
             data_thread = threading.Thread(target=bciDevice.record,args=([0]))
@@ -978,6 +1009,7 @@ class NiatofannApp(wx.App):
         self.mainWindow.Show(True)
         bciDevice.setPoints(int(500.0/profile.niaFPS))
         self.mainWindow.timer.Start(int(1000.0/profile.niaFPS))
+        
     def setIcon(self):
         ib = wx.IconBundle()
         if collected.trainingMode:
@@ -993,6 +1025,7 @@ class NiatofannApp(wx.App):
                 self.mainWindow.resultPanel.playPauseButton.SetLabel("    Pause Training ( Ctrl F12 )    ")
             else:
                 self.mainWindow.resultPanel.playPauseButton.SetLabel(" Continue Training ( Ctrl F11 ) ")
+                
     def make_grad_image(self, width, height, col_left, col_right):
         array = numpy.zeros((height, width, 3), 'uint8')
         alpha = numpy.linspace(0.0, 1.0, width)
