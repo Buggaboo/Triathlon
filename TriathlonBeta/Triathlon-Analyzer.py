@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: iso-8859-1 -*-
 
 # Howto, Code license, Credits, etc: http://code.google.com/B/BCI-Project-Triathlon/
 
@@ -76,7 +77,7 @@ class RawVisualizationPanel(WXElements.GLCanvasBase):
        for eachI in range(len(bciDevice.devices)):
            glColor(0.55,0.55,0.3)
            glRasterPos2f(0.2 ,-0.5 +( (2.0*eachI))/len(bciDevice.devices))
-           for eachChar in ("Device "+str(eachI)+" Raw"):
+           for eachChar in ''.join(["Device ",str(eachI)," Raw"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()
    def newReading(self):
@@ -133,11 +134,11 @@ class FFTVisualizationPanel(WXElements.GLCanvasBase):
        for eachI in range(len(bciDevice.devices)):
            glColor(1.0,0.55,0.3)
            glRasterPos2f(0.2 ,-0.55 +( (2.0*eachI))/len(bciDevice.devices))
-           for eachChar in ("Device "+str(eachI)+" FFT"):
+           for eachChar in ''.join(["Device ",str(eachI)," FFT"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
            glColor(0.55,0.55,0.55)
            glRasterPos2f(0.2 ,-0.60 +( (2.0*eachI))/len(bciDevice.devices))
-           for eachChar in ("Device "+str(eachI)+" EEG Bands"):
+           for eachChar in ''.join(["Device ",str(eachI)," EEG Bands"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()
    def newReading(self):
@@ -184,10 +185,10 @@ class FFTHistoryVisualizationPanel(WXElements.GLCanvasBase):
            glVertexPointerf(wave_array)
            glDrawArrays(GL_LINE_STRIP, 0, len(wave_array))
            glRasterPos2f(-0.95 ,-0.95 + (0.1*everyFingerI) )
-           for eachChar in ("Device "+str(everyFingerI/len(settings.bands))+", Band "+str(everyFingerI%len(settings.bands))+": "+
-                            str(settings.bands[everyFingerI%len(settings.bands)][0])+
-                            "-"+
-                            str(settings.bands[everyFingerI%len(settings.bands)][1])+" Hz"):
+           for eachChar in ''.join([
+               "Device ",str(everyFingerI/len(settings.bands)),", Band ",str(everyFingerI%len(settings.bands)),": ", \
+               ,str(settings.bands[everyFingerI%len(settings.bands)][0]),"-", \
+               str(settings.bands[everyFingerI%len(settings.bands)][1])," Hz"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()
    def newReading(self):
@@ -304,7 +305,7 @@ class SettingsPanel(wx.Panel):
         panelSizer.Add(self.fpsField, 0, wx.EXPAND, 5)
         panelSizer.AddGrowableCol(3)
         panelSizer.Add(wx.StaticText(self,label=""), 0, wx.ALIGN_CENTER, 5)
-        self.bandChoice = wx.Choice(self,choices=[("EEG Band "+str(i)) for i in xrange(9)])
+        self.bandChoice = wx.Choice(self,choices=["EEG Band "+str(i) for i in xrange(9)])
         panelSizer.Add(self.bandChoice, 0, wx.ALIGN_CENTER, 5)
         self.bandChoice.Bind(wx.EVT_CHOICE, self.bandChanged)
         self.fromFreqField = wx.TextCtrl(self,value=str(settings.bands[0][0]))

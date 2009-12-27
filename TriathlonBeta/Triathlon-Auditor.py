@@ -852,11 +852,8 @@ class GUIMain(wx.Frame):
         if ((settings.tStage == 1) and collected.trainingMode): # collecting dimension-reduction-Flow-training chunck
           if (random.random()<0.2):
             settings.flowTrainingChunck.append(sample)
-            self.resultPanel.flowText.SetLabel("Flow Training:\n" +
-                                                                str(len(settings.flowTrainingChunck)) +
-                                                                " of " +
-                                                                str(profile.flowTrainingChunckSize) +
-                                                                " Samples")
+            self.resultPanel.flowText.SetLabel(''.join(["Flow Training:\n", \
+              str(len(settings.flowTrainingChunck))," of ",                                                                str(profile.flowTrainingChunckSize)," Samples"]))
             if len(settings.flowTrainingChunck)==profile.flowTrainingChunckSize: # train dimension-reduction-Flow
                 settings.tStage = 2
                 if profile.dimensionReductionFlowLabel!="None":
@@ -976,12 +973,14 @@ class GUIMain(wx.Frame):
                     workfile2.close()
                     self.cancelTraining()
                     suc = wx.MessageDialog(self,
-                                "Saved as:\n\n"+
-                                profile.profileName+".profile\n"+
-                                profile.profileName+".train\n"+
-                                profile.profileName+".test"+
-                                "\n\nYou can close this application now\n"+
-                                "and proceed with the Breeder", "Finished", wx.OK)
+                      ''.join([
+                                "Saved as:\n\n",
+                                profile.profileName,".profile\n",
+                                profile.profileName,".train\n",
+                                profile.profileName,".test",
+                                "\n\nYou can close this application now\n",
+                                "and proceed with the Breeder"])
+                      , "Finished", wx.OK)
                     suc.ShowModal()
                     suc.Destroy()
         if ((settings.tStage >= 1) and collected.trainingMode and profile.qfEnabled): # Quickfire
@@ -1052,7 +1051,7 @@ if __name__ == "__main__":
                 profile = pickle.load(workfile)
                 workfile.close()
             else:
-                print "no "+profilefile+".profile"+" file found"
+                print ''.join(["no ",profilefile, ".profile file found"])
         else:
             selection = WXElements.selection("Select your Device",InputManager.SupportedDevices.keys()[0],InputManager.SupportedDevices.keys())
             profile.deviceName = selection

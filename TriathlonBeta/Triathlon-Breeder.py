@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: iso-8859-1 -*-
 
 # Howto, Code license, Credits, etc: http://code.google.com/B/BCI-Project-Triathlon/
 
@@ -155,8 +156,8 @@ class NeuralNet():
             self.ann = libfann.neural_net()
     def getChild(self, num_mutations):
         self.childrenHad = self.childrenHad + 1
-        newANN = NeuralNet(name               = (self.getNameStub(self.name) + "-" + str(self.generation + 1) + "-" +
-                                                 str(self.childrenHad) + "-" + str(self.bornBefore + self.childrenHad)),
+        newANN = NeuralNet(name               = ''.join([self.getNameStub(self.name) , "-" , str(self.generation + 1) , "-" ,
+                                                 str(self.childrenHad) , "-" , str(self.bornBefore + self.childrenHad)])),
                            generation         = self.generation + 1,
                            connection_rate    = self.connection_rate,
                            learning_rate      = self.learning_rate,
@@ -541,7 +542,7 @@ class NetPanel(wx.Panel):
         self.max_iterationsText.SetLabel(" Training Epochs: "+str(neuralnet.max_iterations))
         self.learning_rateText.SetLabel(" Learning rate: "+str(neuralnet.learning_rate))
         if (neuralnet.connectionType=='Sparse'):
-            self.connection_rateText.SetLabel(" "+str(neuralnet.ann.get_total_connections())+" Connections (no shortcuts)")
+            self.connection_rateText.SetLabel(''.join([" ",str(neuralnet.ann.get_total_connections())," Connections (no shortcuts)"]))
         elif  (neuralnet.connectionType=='Shortcut'):
             self.connection_rateText.SetLabel(" "+str(neuralnet.ann.get_total_connections())+" Connections (including shortcuts)")
         self.foodText.SetLabel(" Energy required: "+str(neuralnet.foodcost))
