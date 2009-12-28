@@ -1,3 +1,11 @@
+TODO 28-12-09
++ refactored "str" + "str" + "str" ... to ''.join(["str...","str...",...
+- refactor to smaller functions
+  - analyzer
+  - auditor
+  - breeder
+  - player
+
 TODO 10-11-09
 - find replacements for the following functions
   - Triathlon-Breeder.py:58:        self.trainingData = libfann.training_data() -> to get_train_data_input or fann_train or fann_train_data
