@@ -187,7 +187,7 @@ class FFTHistoryVisualizationPanel(WXElements.GLCanvasBase):
            glRasterPos2f(-0.95 ,-0.95 + (0.1*everyFingerI) )
            for eachChar in ''.join([
                "Device ",str(everyFingerI/len(settings.bands)),", Band ",str(everyFingerI%len(settings.bands)),": ", \
-               ,str(settings.bands[everyFingerI%len(settings.bands)][0]),"-", \
+               str(settings.bands[everyFingerI%len(settings.bands)][0]),"-", \
                str(settings.bands[everyFingerI%len(settings.bands)][1])," Hz"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()

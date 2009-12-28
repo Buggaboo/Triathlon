@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: iso-8859-1 -*-
 
 # Howto, Code license, Credits, etc: http://code.google.com/B/BCI-Project-Triathlon/
 
@@ -187,26 +188,31 @@ class ChannelPanel(wx.Panel):
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
         self.channelIndex = channelIndex
+        
     def IncludeChanged(self, event):
         profile.channels[self.channelIndex].includeInOutput = self.includeCB.IsChecked()
         event.Skip()
+        
     def LowChanged(self, event):
         profile.channels[self.channelIndex].lowThreshold = (float(self.lowSlider.GetValue()) - 500.0) / 500.0
         if profile.channels[self.channelIndex].lowThreshold > profile.channels[self.channelIndex].highThreshold:
             self.highSlider.SetValue(1000-self.lowSlider.GetValue())
             profile.channels[self.channelIndex].highThreshold = profile.channels[self.channelIndex].lowThreshold
         event.Skip()
+        
     def HighChanged(self, event):
         profile.channels[self.channelIndex].highThreshold = (-float(self.highSlider.GetValue()) + 500.0) / 500.0
         if profile.channels[self.channelIndex].lowThreshold > profile.channels[self.channelIndex].highThreshold:
             self.lowSlider.SetValue(1000-self.highSlider.GetValue())
             profile.channels[self.channelIndex].lowThreshold = profile.channels[self.channelIndex].highThreshold
         event.Skip()
+        
     def LowKeycodeChanged(self, event):
         profile.channels[self.channelIndex].outputKeyList[0] = (profile.channels[self.channelIndex].outputKeyList[0][0],
                                                                  profile.channels[self.channelIndex].outputKeyList[0][1], 
                                                                  self.lowChoice.GetStringSelection()[8:])
         event.Skip()
+        
     def HighKeycodeChanged(self, event):
         profile.channels[self.channelIndex].outputKeyList[1] = (profile.channels[self.channelIndex].outputKeyList[1][0],
                                                                  profile.channels[self.channelIndex].outputKeyList[1][1],
@@ -246,6 +252,7 @@ class SettingPanel(wx.Panel):
         panelSizer.Add(self.nb, 0, wx.EXPAND, 5)
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
+        
     def SwitchOutput(self, event):
         if current.outputMode:
             current.outputMode=False
@@ -255,20 +262,25 @@ class SettingPanel(wx.Panel):
             bciDevice.calibrateAll()            
         fannToOutputApp.setIcon()
         event.Skip()
+        
     def releaseAll(self):
         for channelIndex in range(len(profile.channels)):
             self.releaseAllinChannel(channelIndex)
+            
     def releaseAllinChannel(self,channelIndex):
         for (clName,cond,keystr) in profile.channels[channelIndex].outputKeyList:
             inputFaker.keyRelease(keystr)
         inputFaker.flush()
+        
     def newReading(self):
         for channelIndex in range(len(profile.channels)):
                 self.channelPanels[channelIndex].canvas.newReading()
                 self.channelPanels[channelIndex].currentSlider.SetValue(500 + int(round(500.0 * current.output[channelIndex])))
+                
     def qfActioncodeChanged(self, event):
         profile.qfAction = self.qfActionChoice.GetStringSelection()[8:]
         event.Skip()
+        
     def qfEnabledChanged(self, event):
         profile.qfEnabled = self.qfCheckbox.IsChecked()
         event.Skip()
@@ -296,6 +308,7 @@ class VisualizationPanel(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
        glLoadIdentity();
@@ -361,6 +374,7 @@ class VisualizationPanel(WXElements.GLCanvasBase):
        glVertexPointerf([[-1.0,-1.0+(2.0*profile.qfThreshold)],[1.0,-1.0+(2.0*profile.qfThreshold)]])
        glDrawArrays(GL_LINE_STRIP, 0, 2)
        self.SwapBuffers()
+       
    def newReading(self):
         self.raw = [ [ float(min(bciDevice.working_Data(0)[-385:-1]))/ float(bciDevice.calibration(0)), 
                      float(max(bciDevice.working_Data(0)[-385:-1]))/ float(bciDevice.calibration(0)),
@@ -405,13 +419,16 @@ class GUIMain(wx.Frame):
         self.currentReadingsAndTail = [ bciDevice.frequenciesCombined(profile.freqRange[0],profile.freqRange[1])
                                                         for eachIndex in range(profile.timeTailLength+1)]
         self.timer = wx.Timer(self, wx.ID_ANY)
+        
         self.Bind(wx.EVT_TIMER, self.NiaUpdate, self.timer)
     def OnQuit(self, event):
         self.timer.Stop()
         self.Close()
+        
     def OnCalibrate(self, event):
         bciDevice.calibrateAll()
         event.Skip()
+        
     def OnSave(self, event):
         if os.path.exists(profile.profileName+".profile"):
             os.remove(profile.profileName+".profile")
@@ -419,9 +436,11 @@ class GUIMain(wx.Frame):
         pickle.dump(profile, workfile)
         workfile.close()
         event.Skip()
+        
     def qfChanged(self, event):
         profile.qfThreshold = (float(30+self.qfThresholdSlider.GetValue())/1060.0)
         event.Skip()
+        
     def NiaUpdate(self, ev):
         if bciDevice.deviceType == InputManager.OCZ_NIAx2:
             data_thread = threading.Thread(target=bciDevice.record,args=([0]))
@@ -494,6 +513,7 @@ class FannToOutputApp(wx.App):
         self.mainWindow.Show(True)
         bciDevice.setPoints(int(500.0/profile.niaFPS))
         self.mainWindow.timer.Start(int(1000.0/profile.niaFPS))
+        
     def setIcon(self):
         ib = wx.IconBundle()
         if current.outputMode:
@@ -506,6 +526,7 @@ class FannToOutputApp(wx.App):
         icon.CopyFromBitmap(bmp)
         ib.AddIcon(icon)
         self.mainWindow.SetIcons(ib)
+        
     def make_grad_image(self, width, height, col_left, col_right):
         array = numpy.zeros((height, width, 3), 'uint8')
         alpha = numpy.linspace(0.0, 1.0, width)

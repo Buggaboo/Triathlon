@@ -91,9 +91,11 @@ class BreedingEventTimer(wx.Timer):
         self.population = NeuralNetPopulation(maxSize=settings.populationSize)
         self.childNN = ""
         self.Start(20)
+        
     def Notify(self):
         if settings.breeding:
             self.evolve(1)
+            
     def evolve(self,steps):
         if settings.breeding:
           for i in range(steps):
@@ -154,19 +156,23 @@ class NeuralNet():
         self.connectionType = connectionType
         if self.ann =="":
             self.ann = libfann.neural_net()
+            
     def getChild(self, num_mutations):
         self.childrenHad = self.childrenHad + 1
-        newANN = NeuralNet(name               = ''.join([self.getNameStub(self.name) , "-" , str(self.generation + 1) , "-" ,
-                                                 str(self.childrenHad) , "-" , str(self.bornBefore + self.childrenHad)])),
-                           generation         = self.generation + 1,
-                           connection_rate    = self.connection_rate,
-                           learning_rate      = self.learning_rate,
-                           max_iterations     = self.max_iterations,
-                           bornBefore         = self.bornBefore + self.childrenHad,
-                           trainAlg           = self.trainAlg,
-                           learning_momentum  = self.learning_momentum,
-                           neurons            = self.neurons,
-                           connectionType     = self.connectionType)
+        newANN = NeuralNet(
+          name = ''.join([self.getNameStub(self.name) , "-" ,
+            str(self.generation + 1), "-" ,
+            str(self.childrenHad) , "-" , str(self.bornBefore + self.childrenHad)]),
+          generation = self.generation + 1,
+          connection_rate    = self.connection_rate,
+          learning_rate      = self.learning_rate,
+          max_iterations     = self.max_iterations,
+          bornBefore         = self.bornBefore + self.childrenHad,
+          trainAlg           = self.trainAlg,
+          learning_momentum  = self.learning_momentum,
+          neurons            = self.neurons,
+          connectionType     = self.connectionType
+        )
         newANN.ann.set_quickprop_decay(self.ann.get_quickprop_decay())
         newANN.ann.set_quickprop_mu(self.ann.get_quickprop_mu())
         newANN.ann.set_rprop_increase_factor(self.ann.get_rprop_increase_factor())
@@ -178,6 +184,7 @@ class NeuralNet():
                 newANN.mutate()
         newANN.train()
         return newANN
+        
     def mutate(self):
         mutation = settings.mutationlist[random.randrange(len(settings.mutationlist))]
         if mutation == "change_connection_rate":
@@ -330,6 +337,7 @@ class NeuralNet():
 #                        new = 20.0
 #                    self.ann.set_rprop_delta_zero(new)
         self.foodcost    = (0.001*(len(self.neurons)-1)) + (0.0001*sum(map(len,self.neurons[0:-1])))
+        
     def train(self):
         self.ann.set_learning_momentum(self.learning_momentum)
         self.ann.set_training_algorithm(self.trainAlg)
@@ -355,6 +363,7 @@ class NeuralNet():
         if str(self.summedError) == 'nan':
             self.summedError = 9999999.0
         neuralNetBreederApp.mainWindow.updateNumberOfNets()
+        
     def getNameStub(self,name):
         result = name
         if '-' in result:
@@ -366,6 +375,7 @@ class NeuralNetPopulation():
         self.maxSize  = maxSize
         self.subjects = []
         self.lastSavedName = ""
+        
     def addIfBetter(self,newSubject):
         if len(self.subjects)< self.maxSize:
                 self.subjects.append(newSubject)
@@ -382,8 +392,10 @@ class NeuralNetPopulation():
                 if newTotalValue< highestTotalValue:
                         self.subjects[highestTotalIndex] = newSubject
                         neuralNetBreederApp.mainWindow.subjectPanels[highestTotalIndex].setToNN(self.subjects[highestTotalIndex])
+                        
     def getAChild(self,maxMutations):
         return (self.subjects[random.randrange(len(self.subjects))].getChild(maxMutations))
+        
     def setBestUI(self):
         bestIndex = 0
         bestTotalValue = 100.0
@@ -444,6 +456,7 @@ class ErrorCanvas(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
        glLoadIdentity();
@@ -464,6 +477,7 @@ class ErrorCanvas(WXElements.GLCanvasBase):
             glVertexPointerf(wave_array)
             glDrawArrays(GL_QUAD_STRIP, 0, len(wave_array))
        self.SwapBuffers()
+       
    def setHistory(self, history):
         self.history = history
         self.Refresh()
@@ -536,6 +550,7 @@ class NetPanel(wx.Panel):
         panelSizer.Add(self.qlText, 0, wx.ALIGN_LEFT|wx.ALL, 4)
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
+        
     def setToNN(self,neuralnet):
         self.nn = neuralnet
         self.nameText.SetLabel(" Name: "+neuralnet.name)
@@ -544,15 +559,15 @@ class NetPanel(wx.Panel):
         if (neuralnet.connectionType=='Sparse'):
             self.connection_rateText.SetLabel(''.join([" ",str(neuralnet.ann.get_total_connections())," Connections (no shortcuts)"]))
         elif  (neuralnet.connectionType=='Shortcut'):
-            self.connection_rateText.SetLabel(" "+str(neuralnet.ann.get_total_connections())+" Connections (including shortcuts)")
+            self.connection_rateText.SetLabel(''.join([" ",str(neuralnet.ann.get_total_connections())," Connections (including shortcuts)"]))
         self.foodText.SetLabel(" Energy required: "+str(neuralnet.foodcost))
-        self.layerSummaryText.SetLabel(" "+str(1+len(neuralnet.neurons))+" Layers ("+
-                                           str(len(neuralnet.neurons)-1)+" hidden)\n "+
-                                           str(settings.num_input  + sum(map(len,neuralnet.neurons)))+" Nodes total ("+
-                                           str(settings.num_input)+" in, "+
-                                           str(sum(map(len,neuralnet.neurons[0:-1])))+" hidden, "+
-                                           str(len(neuralnet.neurons[-1]))+" out)")
-        self.layerSummaryText.SetToolTip(wx.ToolTip("Nodes per layer: "+str([settings.num_input]+map(len,neuralnet.neurons))))
+        self.layerSummaryText.SetLabel(''.join([" ",str(1+len(neuralnet.neurons))," Layers (",
+                                           str(len(neuralnet.neurons)-1)," hidden)\n ",
+                                           str(settings.num_input  , sum(map(len,neuralnet.neurons)))," Nodes total (",
+                                           str(settings.num_input)," in, ",
+                                           str(sum(map(len,neuralnet.neurons[0:-1])))," hidden, ",
+                                           str(len(neuralnet.neurons[-1]))," out)"]))
+        self.layerSummaryText.SetToolTip(wx.ToolTip("Nodes per layer: ",str([settings.num_input].extend(map(len,neuralnet.neurons)))))
         if neuralnet.trainAlg == 0:
             self.trainAlgText.SetLabel(" Training algorithm: Backprop incremental")
             self.trainAlgText.SetToolTip(wx.ToolTip("no special settings"))
@@ -561,23 +576,24 @@ class NetPanel(wx.Panel):
             self.trainAlgText.SetToolTip(wx.ToolTip("no special settings"))
         elif neuralnet.trainAlg == 2:
             self.trainAlgText.SetLabel(" Training algorithm: iRPROP batch")
-            self.trainAlgText.SetToolTip(wx.ToolTip("increase factor: "+str(neuralnet.ann.get_rprop_increase_factor())+"\n"+
-                                         "decrease factor: "+str(neuralnet.ann.get_rprop_decrease_factor())+"\n"+
-                                         "delta min: "+str(neuralnet.ann.get_rprop_delta_min())+"\n"+
-                                         "delta max: "+str(neuralnet.ann.get_rprop_delta_max())))
+            self.trainAlgText.SetToolTip(wx.ToolTip(''.join(["increase factor: ",str(neuralnet.ann.get_rprop_increase_factor()),"\n",
+                                         "decrease factor: ",str(neuralnet.ann.get_rprop_decrease_factor()),"\n",
+                                         "delta min: ",str(neuralnet.ann.get_rprop_delta_min()),"\n",
+                                         "delta max: ",str(neuralnet.ann.get_rprop_delta_max())])))
         elif neuralnet.trainAlg == 3:
             self.trainAlgText.SetLabel(" Training algorithm: quickprop batch")
-            self.trainAlgText.SetToolTip(wx.ToolTip("decay: "+str(neuralnet.ann.get_quickprop_decay())+"\n"+
-                                         "mu: "+str(neuralnet.ann.get_quickprop_mu())))
+            self.trainAlgText.SetToolTip(wx.ToolTip(''.join(["decay: ",str(neuralnet.ann.get_quickprop_decay()),"\n",
+                                         "mu: ",str(neuralnet.ann.get_quickprop_mu())])))
         self.learning_momentumText.SetLabel(" Learning momentum: "+str(neuralnet.learning_momentum))
         self.errorText.SetLabel(" Mean Square Error: "+str(neuralnet.mseHistory[-1]))
         self.testerrorText.SetLabel(" Test MSE: "+str(neuralnet.testmseHistory[-1]))
         self.errorCanvas.setHistory(neuralnet.mseHistory)
         self.testerrorCanvas.setHistory(neuralnet.testmseHistory)
         self.qlText.SetLabel(" Total Quality: "+str(1.0-(2.0*neuralnet.summedError)))
+        
     def printDetails(self, event=None):
         if self.nn != "":
-            print ("\nDetails about "+self.nameText.GetLabel()[7:]+":\n")
+            print ''.join(["\nDetails about ",self.nameText.GetLabel()[7:],":\n"])
             self.nn.ann.print_parameters()
             self.nn.ann.print_connections()
         else:
@@ -601,7 +617,7 @@ class GUIMain(wx.Frame):
         self.playButton.Bind(wx.EVT_BUTTON, self.OnPlay)
         sizer.Add(self.playButton, 0, wx.EXPAND|wx.ALL, 2)
         categoryNotebook = wx.Notebook(self.panel)
-        self.leftNet = NetPanel(categoryNotebook,"\n Best Translator\n (saved as "+settings.datafile+".net)\n")
+        self.leftNet = NetPanel(categoryNotebook,''.join(["\n Best Translator\n (saved as ",settings.datafile,".net)\n"]))
         self.rightNet = NetPanel(categoryNotebook,"\n New Translator\n (to be tested)\n")
         subjectNBPanel = wx.Panel(categoryNotebook)
         subjectNBSizer = wx.FlexGridSizer(0,1,0,0)
@@ -622,8 +638,10 @@ class GUIMain(wx.Frame):
         sizer.Add(categoryNotebook, 0, wx.EXPAND|wx.ALL , 2)
         self.panel.SetSizer(sizer)
         self.panel.Layout()
+        
     def OnQuit(self, event=None):
         self.Close()
+        
     def OnPlay(self, event=None):
         if settings.breeding:
                 settings.breeding = False
@@ -631,6 +649,7 @@ class GUIMain(wx.Frame):
         else:
                 settings.breeding = True
                 self.playButton.SetLabel("Pause breeding")
+                
     def updateNumberOfNets(self):
         self.netsTried.SetLabel("Neural nets tried: "+str(settings.netsTried))
 
@@ -678,8 +697,7 @@ if __name__ == "__main__":
     else:
         datafile = sys.argv[1]
     if len(datafile)==0:
-        print ( "If you want to breed a neural net based on myProfile.train and myProfile.test,\n"+
-                "use: python Triathlon-Breeder.py myProfile")
+        print ( "If you want to breed a neural net based on myProfile.train and myProfile.test,\nuse: python Triathlon-Breeder.py myProfile")
     else:
         if os.path.exists(datafile+".train") and os.path.exists(datafile+".test"):
             settings = AppSettings(datafile)
@@ -687,4 +705,4 @@ if __name__ == "__main__":
             breedTimer = BreedingEventTimer()
             neuralNetBreederApp.MainLoop()
         else:
-            print "Error: no "+datafile+".train file\nor no "+datafile+".test file found."  
+            print ''.join(["Error: no ",datafile,".train file\nor no ",datafile,".test file found."])

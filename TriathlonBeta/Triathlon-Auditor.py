@@ -517,7 +517,7 @@ class SettingPanel(wx.Panel):
                 newChannels[-1].outputKeyList[1] = (newChannels[-1].outputKeyList[1][0],
                                                     self.channelPannels[avChannelIndex].channelHighConditionChoice.GetStringSelection()[11:],
                                                     newChannels[-1].outputKeyList[1][2])
-        if not(atLeastOne):
+        if not atLeastOne:
             self.channelPannels[0].channelCheckbox.SetValue(True)
             newChannels.append(settings.availableChannels[0])
             self.channelPannels[0].channelAllSamplesCheckbox.SetValue(True)
@@ -530,7 +530,7 @@ class SettingPanel(wx.Panel):
                                                 self.channelPannels[avChannelIndex].channelHighConditionChoice.GetStringSelection()[11:],
                                                 newChannels[-1].outputKeyList[1][2])
             atLeastOneAllSamples = True
-        if not(atLeastOneAllSamples):
+        if not atLeastOneAllSamples:
             firstI = -1
             for index in range(len(settings.availableChannels)):
                 if self.channelPannels[index].channelCheckbox.IsChecked():
@@ -691,7 +691,7 @@ class ResultPanel(wx.Panel):
         self.flowText = wx.StaticText(self,label="Flow Training:")
         panelSizer.Add(self.flowText, 0, wx.EXPAND, 5)
         panelSizer.Add(wx.StaticText(self,label=" "), 0, wx.ALIGN_CENTER, 5)
-        for channelIndex in range(len(settings.availableChannels)):
+        for channelIndex in xrange(len(settings.availableChannels)):
                 panelSizer.Add(wx.StaticText(self,label=" "), 0, wx.ALIGN_CENTER, 5)
                 panelSizer.Add(self.channelPanels[channelIndex], 0, wx.EXPAND, 5)
         panelSizer.Add(wx.StaticText(self,label=" "), 0, wx.ALIGN_CENTER, 5)
@@ -957,14 +957,14 @@ class GUIMain(wx.Frame):
                     random.shuffle(finalListOfTestSamples)
                     workfile = open(profile.profileName+".train", "w")
                     workfile2 = open(profile.profileName+".test", "w")
-                    workfile.write(     str(len(finalListOfAllSamples))+' '+
-                                        str(len(collected.dataClusters[0][0][0][0]))+' '+
-                                        str(len(profile.channels))+'\n')
-                    workfile2.write(    str(len(finalListOfTestSamples))+' '+
-                                        str(len(collected.dataClusters[0][0][0][0]))+' '+
-                                        str(len(profile.channels))+'\n')
+                    workfile.write(     ' '.join([str(len(finalListOfAllSamples)),
+                                        str(len(collected.dataClusters[0][0][0][0])),
+                                        str(len(profile.channels)),'\n']))
+                    workfile2.write(    ' '.join([str(len(finalListOfTestSamples)),
+                                        str(len(collected.dataClusters[0][0][0][0])),
+                                        str(len(profile.channels)),'\n']))
                     for labledSample in finalListOfAllSamples:
-                        workfile.write(" ".join(map(lambda x: str(x).replace(",","."), labledSample[0])) + "\n" + 
+                        workfile.write(" ".join(map(lambda x: str(x).replace(",","."), labledSample[0])) , "\n" ,
                                        " ".join(map(lambda x: str(x).replace(",","."), labledSample[1])) + "\n")
                     for labledSample in finalListOfTestSamples:
                         workfile2.write(" ".join(map(lambda x: str(x).replace(",","."), labledSample[0])) + "\n" + 
