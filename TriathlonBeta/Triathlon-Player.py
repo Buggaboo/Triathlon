@@ -91,6 +91,7 @@ class ChannelCanvas(WXElements.GLCanvasBase):
        self.xlist = [0.0 for each in range(30)]
        self.ylist = [-1.0+(2.0*(float(i)/float(29))) for i in range(30)]
        WXElements.GLCanvasBase.__init__(self, parent)
+       
     def InitGL(self):
        light_diffuse = [1.0, 1.0, 1.0, 1.0]
        light_position = [1.0, 1.0, 1.0, 0.0]
@@ -109,6 +110,7 @@ class ChannelCanvas(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
     def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
        glLoadIdentity()
@@ -136,6 +138,7 @@ class ChannelCanvas(WXElements.GLCanvasBase):
        glVertexPointerf([[self.xlist[i] * 0.95 , self.ylist[i]] for i in range(30)])
        glDrawArrays(GL_LINE_STRIP, 0, 30)
        self.SwapBuffers()
+       
     def newReading(self):
         self.xlist = ([current.output[self.channelIndex]]+self.xlist)[0:-1]
         self.Refresh()

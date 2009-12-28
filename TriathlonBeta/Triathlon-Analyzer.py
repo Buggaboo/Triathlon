@@ -63,6 +63,7 @@ class RawVisualizationPanel(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
        glLoadIdentity()
@@ -80,10 +81,12 @@ class RawVisualizationPanel(WXElements.GLCanvasBase):
            for eachChar in ''.join(["Device ",str(eachI)," Raw"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()
+       
    def newReading(self):
        if self.GetGrandParent().GetSelection()==0:
            self.SetCurrent()
            self.OnDraw()
+           
    def resetReading(self):
        if self.GetGrandParent().GetSelection()==0:
            self.SetCurrent()
@@ -108,6 +111,7 @@ class FFTVisualizationPanel(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
        glLoadIdentity()
@@ -141,10 +145,12 @@ class FFTVisualizationPanel(WXElements.GLCanvasBase):
            for eachChar in ''.join(["Device ",str(eachI)," EEG Bands"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()
+       
    def newReading(self):
        if self.GetGrandParent().GetSelection()==2:
            self.SetCurrent()
            self.OnDraw()
+           
    def resetReading(self):
        if self.GetGrandParent().GetSelection()==2:
            self.SetCurrent()
@@ -155,6 +161,7 @@ class FFTHistoryVisualizationPanel(WXElements.GLCanvasBase):
        self.ylists = [[ 0.0 for each in xrange(len(settings.bands)*len(bciDevice.devices))] for every in range(100)]
        self.xlist = [float(i)/float(-1+len(self.ylists[0])) for i in xrange(len(self.ylists[0]))]
        WXElements.GLCanvasBase.__init__(self, parent)
+       
    def InitGL(self):
        light_diffuse = [1.0, 1.0, 1.0, 1.0]
        light_position = [1.0, 1.0, 1.0, 0.0]
@@ -173,6 +180,7 @@ class FFTHistoryVisualizationPanel(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
        glLoadIdentity()
@@ -191,6 +199,7 @@ class FFTHistoryVisualizationPanel(WXElements.GLCanvasBase):
                str(settings.bands[everyFingerI%len(settings.bands)][1])," Hz"]):
                   glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, ord(eachChar))
        self.SwapBuffers()
+       
    def newReading(self):
        newReadings = [] 
        for eachDeviceI in range(len(bciDevice.devices)):
@@ -201,6 +210,7 @@ class FFTHistoryVisualizationPanel(WXElements.GLCanvasBase):
        if self.GetGrandParent().GetSelection()==3:
            self.SetCurrent()
            self.OnDraw()
+           
    def resetReading(self):
        self.ylists = [[0.0 for each in xrange(len(settings.bands)*len(bciDevice.devices))] for every in range(100)]
        if self.GetGrandParent().GetSelection()==3:
@@ -224,6 +234,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
        self.spectralColorColumHistory = []
        for historyIndex in xrange(self.historyLength-1):
            self.spectralColorColumHistory.append(zip ( self.colorlists[historyIndex] , self.colorlists[historyIndex+1]))
+           
    def InitGL(self):
        light_diffuse = [1.0, 1.0, 1.0, 1.0]
        light_position = [1.0, 1.0, 1.0, 0.0]
@@ -242,6 +253,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
        gluLookAt(0.0, 0.0, 10.0,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0)
+                 
    def OnDraw(self):
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
        glLoadIdentity()
@@ -252,6 +264,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
            glColorPointerf(self.spectralColorColumHistory[historyIndex])
            glDrawArrays(GL_QUAD_STRIP, 0, 2*50*len(bciDevice.devices))       
        self.SwapBuffers()
+       
    def newReading(self):
        newReadings = [] 
        for eachDeviceI in range(len(bciDevice.devices)):
@@ -262,6 +275,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
        if self.GetGrandParent().GetSelection()==1:
            self.SetCurrent()
            self.OnDraw()
+           
    def resetReading(self):
        self.colorlists = [[ self.spectralColor(0.0) for each in xrange(50*len(bciDevice.devices))] for every in xrange(self.historyLength)]
        xlist = [-1.0+(2.0*float(i)/float(-1+self.historyLength)) for i in xrange(self.historyLength)]
@@ -279,6 +293,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
        if self.GetGrandParent().GetSelection()==1:
            self.SetCurrent()
            self.OnDraw()
+           
    def spectralColor(self,v):
        if v <= 0.0:
            return [0.0,0.0,0.0]
@@ -320,6 +335,7 @@ class SettingsPanel(wx.Panel):
         panelSizer.Add(wx.StaticText(self,label=""), 0, wx.ALIGN_CENTER, 5)
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
+        
     def fpsChanged(self, event):
         val = 0
         try:
@@ -336,11 +352,13 @@ class SettingsPanel(wx.Panel):
         bciDevice.setPoints(int(500.0/settings.niaFPS))
         self.GetGrandParent().timer.Start(int(1000.0/settings.niaFPS))
         event.Skip()
+        
     def bandChanged(self, event):
         i = self.bandChoice.GetSelection()
         self.fromFreqField.SetValue(str(settings.bands[i][0]))
         self.toFreqField.SetValue(str(settings.bands[i][1]))
         event.Skip()
+        
     def freqChanged(self, event):
         i = self.bandChoice.GetSelection()
         fr = 0
@@ -443,12 +461,15 @@ class GUIMain(wx.Frame):
         self.panel.SetAutoLayout(1)
         self.timer = wx.Timer(self, wx.ID_ANY)
         self.Bind(wx.EVT_TIMER, self.NiaUpdate, self.timer)
+        
     def OnQuit(self, event):
         self.timer.Stop()
         self.Close()
+        
     def OnCalibrate(self, event):
         bciDevice.calibrateAll()
         event.Skip()
+        
     def NiaUpdate(self, ev):
         if bciDevice.deviceType == InputManager.OCZ_NIAx2:
             data_thread = threading.Thread(target=bciDevice.record,args=([0]))
