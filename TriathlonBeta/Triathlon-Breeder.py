@@ -593,11 +593,11 @@ class NetPanel(wx.Panel):
         
     def printDetails(self, event=None):
         if self.nn != "":
-            print ''.join(["\nDetails about ",self.nameText.GetLabel()[7:],":\n"])
+            print "\nDetails about ",self.nameText.GetLabel()[7:],":\n"
             self.nn.ann.print_parameters()
             self.nn.ann.print_connections()
         else:
-            print ("\nYou have not started breeding yet.\n")
+            print "\nYou have not started breeding yet.\n"
 
 class GUIMain(wx.Frame):
     def __init__(self):
@@ -705,4 +705,4 @@ if __name__ == "__main__":
             breedTimer = BreedingEventTimer()
             neuralNetBreederApp.MainLoop()
         else:
-            print ''.join(["Error: no ",datafile,".train file\nor no ",datafile,".test file found."])
+            print "Error: no", datafile+".train file\nor no", datafile+".test file found."

@@ -1051,7 +1051,7 @@ if __name__ == "__main__":
                 profile = pickle.load(workfile)
                 workfile.close()
             else:
-                print ''.join(["no ",profilefile, ".profile file found"])
+                print "no", profilefile + ".profile file found"
         else:
             selection = WXElements.selection("Select your Device",InputManager.SupportedDevices.keys()[0],InputManager.SupportedDevices.keys())
             profile.deviceName = selection
