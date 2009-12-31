@@ -30,6 +30,7 @@ except ImportError:
     print "Will start without OpenGL, because wx.glcanvas is not available."
 
 try:
+# TODO - refactor this shit to prevent namespace pollution
     from OpenGL.GL import *
     from OpenGL.GLU import *
     from OpenGL.GLUT import *
@@ -78,11 +79,11 @@ class InputCondition():
             else:
                 return wx.GetMouseState().middleDown
         elif self.mouseMove:
-            if self.mouseMoveDir == "up":
+            if self.mouseMoveDir is "up":
                 return currentMousePos[1]-lastMousePos[1] < -2
-            elif self.mouseMoveDir == "down":
+            elif self.mouseMoveDir is "down":
                 return currentMousePos[1]-lastMousePos[1] > 2
-            elif self.mouseMoveDir == "left":
+            elif self.mouseMoveDir is "left":
                 return currentMousePos[0]-lastMousePos[0] < -2
             else:
                 return currentMousePos[0]-lastMousePos[0] > 2
@@ -856,7 +857,7 @@ class GUIMain(wx.Frame):
               str(len(settings.flowTrainingChunck))," of ",                                                                str(profile.flowTrainingChunckSize)," Samples"]))
             if len(settings.flowTrainingChunck)==profile.flowTrainingChunckSize: # train dimension-reduction-Flow
                 settings.tStage = 2
-                if profile.dimensionReductionFlowLabel!="None":
+                if profile.dimensionReductionFlowLabel is not "None":
                         profile.dimensionReductionFlow.train(numpy.array(settings.flowTrainingChunck))
                 settings.flowTrainingChunck=[]
                 settings.tStage = 3
@@ -869,12 +870,12 @@ class GUIMain(wx.Frame):
                           break
                     if profile.channels[channelIndex].allSamples:
                         self.resultPanel.channelPanels[allIndex].text.SetLabel(
-                            '0 of '+str((profile.testClusterSize+profile.trainingClusterSize)*2)+' Samples')
+                            ''.join(['0 of ',str((profile.testClusterSize+profile.trainingClusterSize)*2),' Samples']))
                     else:
                         self.resultPanel.channelPanels[allIndex].text.SetLabel('0 Samples')
         elif ((settings.tStage == 3) and collected.trainingMode): # collect labeled dim-reduced feature samples
             wait=False
-            if profile.dimensionReductionFlowLabel=="None":
+            if profile.dimensionReductionFlowLabel is "None":
                     collected.currentReducedSample = sample
             else:
                     collected.currentReducedSample = profile.dimensionReductionFlow(numpy.array([sample]))[0]

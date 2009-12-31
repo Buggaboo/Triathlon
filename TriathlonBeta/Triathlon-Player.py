@@ -31,6 +31,7 @@ except ImportError:
     print "Will start without OpenGL, because wx.glcanvas is not available."
 
 try:
+# TODO - refactor this shit to prevent namespace pollution
     from OpenGL.GL import *
     from OpenGL.GLU import *
     from OpenGL.GLUT import *

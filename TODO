@@ -1,6 +1,10 @@
+TODO 30-12-09
+- decide to refactor the states to decorator or strategy
+- remove all the magic numbers 0..n from the logic
+
 TODO 28-12-09
 + refactored "str" + "str" + "str" ... to ''.join(["str...","str...",...
-- refactor to smaller functions
+@ refactor to smaller functions (huge undertaking, be specific)
   - analyzer
   - auditor
   - breeder

@@ -26,6 +26,7 @@ except ImportError:
     print "Will start without OpenGL, because wx.glcanvas is not available."
 
 try:
+# TODO - refactor this shit to prevent namespace pollution
     from OpenGL.GL import *
     from OpenGL.GLU import *
     from OpenGL.GLUT import *
@@ -71,7 +72,7 @@ class RawVisualizationPanel(WXElements.GLCanvasBase):
        for eachI in range(len(bciDevice.devices)):
            glColor(0.55,0.55,0.3)
            wave_array = []
-           for historyIndex in reversed(xrange(500)):
+           for historyIndex in xrange(499, -1, -1): #reversed(xrange(500)):
                wave_array =  wave_array +[[-1.0+ (2.0*float(historyIndex)/499.0), -1.0+((2.0*eachI)+(0.0000001*bciDevice.working_Data(eachI)[-1-historyIndex]))/len(bciDevice.devices)]]
            glVertexPointerf(wave_array)
            glDrawArrays(GL_LINE_STRIP, 0, len(wave_array))
@@ -262,7 +263,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
        for historyIndex in xrange(self.historyLength-1):
            glVertexPointerf(self.quadCols[historyIndex])
            glColorPointerf(self.spectralColorColumHistory[historyIndex])
-           glDrawArrays(GL_QUAD_STRIP, 0, 2*50*len(bciDevice.devices))       
+           glDrawArrays(GL_QUAD_STRIP, 0, 100*len(bciDevice.devices))
        self.SwapBuffers()
        
    def newReading(self):
@@ -305,8 +306,7 @@ class SpectogramVisualizationPanel(WXElements.GLCanvasBase):
            return [1.0,0.0,1.0-(v-0.5)]
        elif v <= 11.5:
            return [1.0,((v-1.5)*0.05),0.0]
-       else:
-           return [1.0,1.0,((v-11.5)*0.008)]
+       return [1.0,1.0,((v-11.5)*0.008)]
 
 class SettingsPanel(wx.Panel):
     def __init__(self, parent):        
@@ -380,13 +380,14 @@ class SettingsPanel(wx.Panel):
         elif (to>100):
                 to = 100
         if to<fr:
-            sw = fr
-            fr = to
-            to = sw
+            #sw = fr
+            #fr = to
+            #to = sw
+            sw, fr, to = fr, to, sw
         elif to == fr:
-            to = to+2
-        if abs(to-fr)==1:
-            to=to+1
+            to += 2
+        if abs(to-fr) == 1:
+            to += 1
         self.fromFreqField.SetValue(str(fr))
         self.toFreqField.SetValue(str(to))
         settings.bands[i] = (fr,to)

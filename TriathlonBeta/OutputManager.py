@@ -1,3 +1,4 @@
+# -*- coding: iso-8859-1 -*-
 try:
     import Xlib.display
     import Xlib.X        
@@ -9,6 +10,7 @@ except ImportError:
     haveXlib = False
 
 try:
+# TODO - refactor this shit to prevent namespace pollution
     from ctypes import *
     import win32con
     haveWindows = True
