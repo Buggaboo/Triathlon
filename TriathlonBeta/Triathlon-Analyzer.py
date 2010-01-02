@@ -84,12 +84,12 @@ class RawVisualizationPanel(WXElements.GLCanvasBase):
        self.SwapBuffers()
        
    def newReading(self):
-       if self.GetGrandParent().GetSelection()==0:
+       if not self.GetGrandParent().GetSelection():
            self.SetCurrent()
            self.OnDraw()
            
    def resetReading(self):
-       if self.GetGrandParent().GetSelection()==0:
+       if not self.GetGrandParent().GetSelection():
            self.SetCurrent()
            self.OnDraw()
 

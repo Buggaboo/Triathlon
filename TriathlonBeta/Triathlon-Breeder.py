@@ -697,7 +697,7 @@ if __name__ == "__main__":
             print "Error: no profiles found"
     else:
         datafile = sys.argv[1]
-    if len(datafile)==0:
+    if not len(datafile):
         print ( "If you want to breed a neural net based on myProfile.train and myProfile.test,\nuse: python Triathlon-Breeder.py myProfile")
     else:
         if os.path.exists(datafile+".train") and os.path.exists(datafile+".test"):

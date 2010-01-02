@@ -337,12 +337,12 @@ class VisualizationPanel(WXElements.GLCanvasBase):
                   glDrawArrays(GL_LINE_STRIP, 0, len(wave_array))
        for channelIndex in range(len(current.output)):
            for i in range(3):
-                c = (0.0,0.0,0.0)
-                if (i==2) and (current.output[channelIndex]<profile.channels[channelIndex].lowThreshold):
+                c = 0.0,0.0,0.0
+                if i==2 and (current.output[channelIndex]<profile.channels[channelIndex].lowThreshold):
                     c = (0.3,0.3,1.0)
-                elif (i==0) and (current.output[channelIndex]>profile.channels[channelIndex].highThreshold):
+                elif i==0 and (current.output[channelIndex]>profile.channels[channelIndex].highThreshold):
                     c = (0.3,0.3,1.0)
-                elif (i==1) and not((current.output[channelIndex]<profile.channels[channelIndex].lowThreshold) or 
+                elif i==1 and not((current.output[channelIndex]<profile.channels[channelIndex].lowThreshold) or
                                     (current.output[channelIndex]>profile.channels[channelIndex].highThreshold)):
                     c = (0.3,0.3,1.0)
                 else:
@@ -562,10 +562,10 @@ if __name__ == "__main__":
         else:
             profilefile = sys.argv[1]
 
-        if len(profilefile)==0:
+        if not len(profilefile):
             print "Error: no profile name given.\nExample: python nia-Triathlon-Player.py myProfile"
         else:
-            if len(profilefile)==0:
+            if not len(profilefile):
                 profilefile = sys.argv[1] 
             profileLoaded = False
             netLoaded = False
