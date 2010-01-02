@@ -352,7 +352,7 @@ def InputFaker():
 if __name__ == "__main__":
     import time
     inputFaker = InputFaker()
-    if (inputFaker != -1):
+    if inputFaker != -1:
         time.sleep(1)
         inputFaker.mouseMove(50,50)
         inputFaker.flush()

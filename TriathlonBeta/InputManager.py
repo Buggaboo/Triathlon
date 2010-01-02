@@ -1,3 +1,4 @@
+# -*- coding: iso-8859-1 -*-
 import numpy
 import usb
 import sys
@@ -10,7 +11,7 @@ SupportedDevices["OCZ Neural Impulse Actuator"] = OCZ_NIA
 SupportedDevices["2x OCZ Neural Impulse Actuator"] = OCZ_NIAx2
 
 class NIA_Interface():
-    def __init__(self,skipNIAs):
+    def __init__(self, skipNIAs):
         self.VENDOR_ID = 0x1234 #: Vendor Id
         self.PRODUCT_ID = 0x0000 #: Product Id for the bridged usb cable
         self.TIME_OUT = 100
@@ -21,8 +22,8 @@ class NIA_Interface():
         for bus in buses :
             for device in bus.devices :
                 if device.idVendor == self.VENDOR_ID and device.idProduct == self.PRODUCT_ID:
-                    if skipNIAs ==0:
-                        self.device = device 
+                    if skipNIAs == 0:
+                        self.device = device
                         self.config = self.device.configurations[0]
                         self.interface = self.config.interfaces[0][0]
                         self.ENDPOINT1 = self.interface.endpoints[0].address
@@ -34,6 +35,7 @@ class NIA_Interface():
                         skipNIAs -= 1
             if found:
                 break
+                
     def open(self) :
         if not self.device:
             print >> sys.stderr, "Error: could not find enough nia-devices"
@@ -46,8 +48,9 @@ class NIA_Interface():
             self.handle.claimInterface(self.interface)
             self.handle.setAltInterface(self.interface)
         except usb.USBError, err:
-            if False:            # usb debug info
-                print >> sys.stderr, err
+            #if False:            # usb debug info
+            print >> sys.stderr, err
+            
     def close(self):
         try:
             self.handle.reset()
@@ -55,8 +58,15 @@ class NIA_Interface():
         except Exception, err:
             print >> sys.stderr, err
         self.handle, self.device = None, None
+        
     def read(self):
-        return self.handle.interruptRead(self.ENDPOINT1,self.PACKET_LENGTH,self.TIME_OUT)
+        try:
+            return self.handle.interruptRead(self.ENDPOINT1,self.PACKET_LENGTH,self.TIME_OUT)
+        except usb.USBError, err:
+            print "Pulled out the NIA device, accidentally?"
+            print >> sys.stderr, err
+            self.close()
+            sys.exit(-1)
 
 class NIA_Data():
     def __init__(self,point,skipNIAs) :
@@ -66,18 +76,21 @@ class NIA_Data():
         self.interface = NIA_Interface(skipNIAs)
         self.interface.open()
         self.calibrate()
+        
     def calibrate(self):
         while len(self.Working_Data)<3844:
             self.record()
         self.Calibration = sum(self.Working_Data)/len(self.Working_Data)
-        self.process() 
+        self.process()
+        
     def record(self):
         current_data = [] # prepares a new list to store the read NIA data
         for a in range(self.Points):
             raw_data = self.interface.read()
-            for b in range(int(raw_data[54])): # byte 54 gives the number of samples
+            for b in xrange(int(raw_data[54])): # byte 54 gives the number of samples
                 current_data.append(raw_data[b*3+2]*65536 + raw_data[b*3+1]*256 + raw_data[b*3] - 800000)
         self.Working_Data = (self.Working_Data+current_data)[-3845:-1] # GIL prevents bugs here.
+        
     def process(self):
         filtered = numpy.fft.fft(
                 map(lambda v,w,x,y,z: (v+2*w+3*x+2*y+z)/(9.0*self.Calibration), 
@@ -97,26 +110,35 @@ class BCIDevice():
         elif self.deviceType == OCZ_NIAx2:
             self.devices.append(NIA_Data(25,0))
             self.devices.append(NIA_Data(25,1))
+            
     def frequencies(self,i,fromFreq,toFreq):
         return self.devices[i].Frequencies[fromFreq:toFreq]
+        
     def frequenciesCombined(self,fromFreq,toFreq):
         result = []
         for i in range(len(self.devices)):
             result.extend(self.frequencies(i,fromFreq,toFreq))
         return result
+        
     def process(self,i):
         self.devices[i].process()
+        
     def record(self,i):
         self.devices[i].record()
+        
     def calibrate(self,i):
         self.devices[i].calibrate()
+        
     def calibrateAll(self):
         for i in range(len(self.devices)):
             self.calibrate(i)
+            
     def working_Data(self,i):
         return self.devices[i].Working_Data
+        
     def calibration(self,i):
         return self.devices[i].Calibration
+        
     def setPoints(self,po):
         for i in range(len(self.devices)):
             self.devices[i].Points = po

@@ -806,7 +806,7 @@ class GUIMain(wx.Frame):
         
     def NotebookChanged(self, event):
         if settings.tStage == 0:
-            if self.stageNotebook.GetSelection() != 0:
+            if not self.stageNotebook.GetSelection():
                 self.stageNotebook.SetSelection(0)
         else:
             if self.stageNotebook.GetSelection() != 1:

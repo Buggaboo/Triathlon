@@ -72,7 +72,7 @@ class RawVisualizationPanel(WXElements.GLCanvasBase):
        for eachI in range(len(bciDevice.devices)):
            glColor(0.55,0.55,0.3)
            wave_array = []
-           for historyIndex in xrange(499, -1, -1): #reversed(xrange(500)):
+           for historyIndex in xrange(499, -1, -1):
                wave_array =  wave_array +[[-1.0+ (2.0*float(historyIndex)/499.0), -1.0+((2.0*eachI)+(0.0000001*bciDevice.working_Data(eachI)[-1-historyIndex]))/len(bciDevice.devices)]]
            glVertexPointerf(wave_array)
            glDrawArrays(GL_LINE_STRIP, 0, len(wave_array))
@@ -380,9 +380,6 @@ class SettingsPanel(wx.Panel):
         elif (to>100):
                 to = 100
         if to<fr:
-            #sw = fr
-            #fr = to
-            #to = sw
             sw, fr, to = fr, to, sw
         elif to == fr:
             to += 2

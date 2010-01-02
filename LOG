@@ -1,3 +1,6 @@
+LOG 02-01-10
+* Future directions, use graphics card for signal processing tasks
+
 LOG 10-12-09
 * Long live python and [ s for s in dir(libfann) if "neur" in s ]
 
