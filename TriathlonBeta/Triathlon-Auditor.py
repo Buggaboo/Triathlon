@@ -769,7 +769,7 @@ class GUIMain(wx.Frame):
         self.panel.SetSizer(sizer)
         self.panel.Layout()
         self.currentReadingsAndTail = [ bciDevice.frequenciesCombined(profile.freqRange[0],profile.freqRange[1])
-                                                        for eachIndex in range(profile.timeTailLength+1)]
+                                                        for eachIndex in xrange(profile.timeTailLength+1)]
         self.currentReducedLabeledSample = ([],[])
 
         self.timer = wx.Timer(self, wx.ID_ANY)
@@ -785,7 +785,7 @@ class GUIMain(wx.Frame):
         event.Skip()
         
     def qfChanged(self, event):
-        profile.qfThreshold = (float(30+self.qfThresholdSlider.GetValue())/1060.0)
+        profile.qfThreshold = float(30+self.qfThresholdSlider.GetValue())/1060.0
         event.Skip()
         
     def enterTraining(self):
@@ -853,8 +853,10 @@ class GUIMain(wx.Frame):
         if ((settings.tStage == 1) and collected.trainingMode): # collecting dimension-reduction-Flow-training chunck
           if (random.random()<0.2):
             settings.flowTrainingChunck.append(sample)
-            self.resultPanel.flowText.SetLabel(''.join(["Flow Training:\n", \
-              str(len(settings.flowTrainingChunck))," of ",                                                                str(profile.flowTrainingChunckSize)," Samples"]))
+            self.resultPanel.flowText.SetLabel(''.join(
+                                                      ["Flow Training:\n",
+                                                        str(len(settings.flowTrainingChunck))," of ",
+                                                        str(profile.flowTrainingChunckSize)," Samples"]))
             if len(settings.flowTrainingChunck)==profile.flowTrainingChunckSize: # train dimension-reduction-Flow
                 settings.tStage = 2
                 if profile.dimensionReductionFlowLabel is not "None":

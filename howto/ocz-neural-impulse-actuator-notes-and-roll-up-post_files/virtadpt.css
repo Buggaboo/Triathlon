@@ -1,0 +1,132 @@
+/* Body of each page, pretty straight forward. */
+body, html, div {
+    font-size: 15px;
+    font-family: Helvetica, Verdana, Arial, sans-serif;
+    line-height: 1.4em;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #FFFFFF;
+}
+
+/* Text in subsections along the right-hand side and of comments posted. */
+/* Maybe play with the background-color a little. */
+p {
+    font-size: 15px;
+    font-family: Helvetica, Verdana, Arial, sans-serif;
+    color: #ffffff;
+}
+
+/* Links, don't'cha know. */
+a, a:visited {
+    color: #0598FF;
+}
+
+/* Title text, in page header. */
+h1 {
+    font-size: 32px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #000000;
+}
+
+/* Title text of each entry. */
+/* They're links on the front page, so this won't matter there. */
+h2 {
+    font-size: 24px;
+    font-family: 2.0em Georgia, "Times New Roman", Times, serif;
+    color: #FFF;
+}
+
+h1 a, h2 a {
+    /* Don't make headlines look too much like regular links, even though they're clickable */
+    text-decoration: none;
+}
+
+/* Sidebar subsection titles. */
+h3 {
+    font-size: 18px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #0598FF;
+}
+
+small { 
+    font-size: 11px;
+    color: #999;
+}
+
+hr {
+    border: 0px solid transparent;
+    border-bottom: 1px solid #DDD;
+}
+
+#header {
+    background-color: #000000;
+    margin: 0;
+    padding: 10px 30px;
+    border-bottom: 1px solid #006;
+    /* Note to self: come up with a new header graphic. */
+}
+
+/* Widths of tables are in percentages and should add up to 99% for optimal compatibility. */
+#content {
+    float: left;
+    /* width: 66%; */
+    width: 75%;
+}
+
+#sidebar {
+    float: left;
+    /* width: 33%; */
+    width: 24%;
+    border-left: 1px solid #DDD;
+}
+
+#content-inner, #sidebar-inner  {
+    margin: 0;
+    padding: 10px 30px;
+}
+
+#footer {
+    clear: both;
+    background-color: #000000;
+    margin: 0;
+    padding: 10px;
+    border-top: 1px solid #006;
+}
+
+/* The text of the website's byline or subtitle. */
+p.weblogsubtitle {
+    color: #0598FF;
+    font-style: italic;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+}
+
+/* Text line that contains the date and time of a particular article's posting. */
+p.date {
+    color: #AAAAAA;
+    font-style: italic;
+}
+
+/* This refers to the stuff at the bottom of each post on the frontpage, like the author's username, the number
+    of comments, the permalink, and stuff like that. */
+p.entryfooter {
+    text-align: right;
+    padding: 10px;
+    border-bottom: 1px solid #DDD;
+    color: #999;
+}
+
+/* Just what it says on the tin. */
+/* Need to play around with the width of the blockquote a little.  I'd like it to stop at the end of the longest line in the quote's text. */
+blockquote {
+    border: 1px solid #CCC;
+    background-color: #F2F2F2;
+    padding: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.comment-text {
+    background-color: #888888;
+}

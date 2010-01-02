@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Main JQuery include -->
+	<script type="text/javascript" src="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/jquery_002.js"></script>
+
+    <title>
+        OCZ Neural Impulse Actuator notes and roll-up post. - Antarctica Starts Here.
+                
+    </title>
+    <link href="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/pivotx_essentials.css" rel="stylesheet" type="text/css" media="screen">  
+    <link href="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/virtadpt.css" rel="stylesheet" type="text/css" media="screen">
+    <meta name="keywords" content="The Doctor, drwho, hacking, cracking, code, perl, python, magick, thelema, life, technomagick, blog, music, travel, adventure, time travel, security, technology, diary, reverse engineering">
+    <meta name="title" content="The website, photo album, travelogue, and project site of The Doctor [412/724/301/703].">
+    <meta name="author" content="The Doctor [412/724/301/703] (drwho $40 virtadpt.net)">
+	<meta name="generator" content="PivotX"><!-- version: PivotX - 2.0.0 -->
+	<link rel="shortcut icon" href="http://drwho.virtadpt.net/pivotx/pics/favicon.ico">
+
+	<link rel="canonical" href="http://drwho.virtadpt.net/archive/2009/03/18/ocz-neural-impulse-actuator-notes-and-roll-up-post">
+
+	<link rel="alternate" type="application/rss+xml" title="Antarctica Starts Here. (RSS Feed)" href="http://drwho.virtadpt.net/rss">
+	<link rel="alternate" type="application/rss+xml" title="Antarctica Starts Here. (RSS Feed for comments)" href="http://drwho.virtadpt.net/rss?comm=1">
+	<link rel="alternate" type="application/atom+xml" title="Antarctica Starts Here. (Atom Feed)" href="http://drwho.virtadpt.net/atom">
+	<link rel="alternate" type="application/atom+xml" title="Antarctica Starts Here. (Atom Feed for comments)" href="http://drwho.virtadpt.net/atom?comm=1">
+
+	<link rel="stylesheet" type="text/css" href="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/markitup-mini.css">
+
+<script type="text/javascript">
+<!--
+function jHTBHWPg(){ jQuery('input[name=post]').attr('disabled', ''); }
+function VfeRVYvcxO(KBDcLq){ WsNYgfrhBLr = document.getElementById("YoITHGJBktUMWBNwpi"); if(!WsNYgfrhBLr){ return false; } else { WsNYgfrhBLr.name = QteEEyXlevuihqWYsx(KBDcLq); WsNYgfrhBLr.value = TFVOSOhjcdsePRAZmV(); return true; }} function cNeZC(num,cnt){return(num<<cnt)|(num>>>(32-cnt));} function tf(zANP){var Wnvf="0123456789abcdef";var str="";for(var i=0;i<zANP.length*4;i++){str+=Wnvf.charAt((zANP[i>>2]>>((i%4)*8+4))&0xF)+Wnvf.charAt((zANP[i>>2]>>((i%4)*8))&0xF);}return str;} function TFVOSOhjcdsePRAZmV(){var oFSVeSylkh = 170; var i; for(i = 0; i <= 229; i++){ oFSVeSylkh += i; } return oFSVeSylkh; }  function CRpx(a,b,c,d,x,s,t){return pONM(b ^ c ^ d,a,b,x,s,t);} function pONM(q,a,b,x,s,t){return afPfqb(cNeZC(afPfqb(afPfqb(a,q),afPfqb(x,t)),s),b);}function onW(a,b,c,d,x,s,t){return pONM((b&c)|((~b)&d),a,b,x,s,t);} function GiHxgv(a,b,c,d,x,s,t){return pONM((b&d)|(c&(~d)),a,b,x,s,t);} function TFTjDs(x,len){x[len>>5]|=0x80<<((len)%32);x[(((len+64)>>>9)<<4)+14]=len;var a=1732584193;var b=-271733879;var c=-1732584194;var d=271733878;for(var i=0;i<x.length;i+=16){var olda=a;var oldb=b;var oldc=c;var oldd=d;a=onW(a,b,c,d,x[i+0],7,-680876936);d=onW(d,a,b,c,x[i+1],12,-389564586);c=onW(c,d,a,b,x[i+2],17,606105819);b=onW(b,c,d,a,x[i+3],22,-1044525330);a=onW(a,b,c,d,x[i+4],7,-176418897);d=onW(d,a,b,c,x[i+5],12,1200080426);c=onW(c,d,a,b,x[i+6],17,-1473231341);b=onW(b,c,d,a,x[i+7],22,-45705983);a=onW(a,b,c,d,x[i+8],7,1770035416);d=onW(d,a,b,c,x[i+9],12,-1958414417);c=onW(c,d,a,b,x[i+10],17,-42063);b=onW(b,c,d,a,x[i+11],22,-1990404162);a=onW(a,b,c,d,x[i+12],7,1804603682);d=onW(d,a,b,c,x[i+13],12,-40341101);c=onW(c,d,a,b,x[i+14],17,-1502002290);b=onW(b,c,d,a,x[i+15],22,1236535329);a=GiHxgv(a,b,c,d,x[i+1],5,-165796510);d=GiHxgv(d,a,b,c,x[i+6],9,-1069501632);c=GiHxgv(c,d,a,b,x[i+11],14,643717713);b=GiHxgv(b,c,d,a,x[i+0],20,-373897302);a=GiHxgv(a,b,c,d,x[i+5],5,-701558691);d=GiHxgv(d,a,b,c,x[i+10],9,38016083);c=GiHxgv(c,d,a,b,x[i+15],14,-660478335);b=GiHxgv(b,c,d,a,x[i+4],20,-405537848);a=GiHxgv(a,b,c,d,x[i+9],5,568446438);d=GiHxgv(d,a,b,c,x[i+14],9,-1019803690);c=GiHxgv(c,d,a,b,x[i+3],14,-187363961);b=GiHxgv(b,c,d,a,x[i+8],20,1163531501);a=GiHxgv(a,b,c,d,x[i+13],5,-1444681467);d=GiHxgv(d,a,b,c,x[i+2],9,-51403784);c=GiHxgv(c,d,a,b,x[i+7],14,1735328473);b=GiHxgv(b,c,d,a,x[i+12],20,-1926607734);a=CRpx(a,b,c,d,x[i+5],4,-378558);d=CRpx(d,a,b,c,x[i+8],11,-2022574463);c=CRpx(c,d,a,b,x[i+11],16,1839030562);b=CRpx(b,c,d,a,x[i+14],23,-35309556);a=CRpx(a,b,c,d,x[i+1],4,-1530992060);d=CRpx(d,a,b,c,x[i+4],11,1272893353);c=CRpx(c,d,a,b,x[i+7],16,-155497632);b=CRpx(b,c,d,a,x[i+10],23,-1094730640);a=CRpx(a,b,c,d,x[i+13],4,681279174);d=CRpx(d,a,b,c,x[i+0],11,-358537222);c=CRpx(c,d,a,b,x[i+3],16,-722521979);b=CRpx(b,c,d,a,x[i+6],23,76029189);a=CRpx(a,b,c,d,x[i+9],4,-640364487);d=CRpx(d,a,b,c,x[i+12],11,-421815835);c=CRpx(c,d,a,b,x[i+15],16,530742520);b=CRpx(b,c,d,a,x[i+2],23,-995338651);a=UgGmou(a,b,c,d,x[i+0],6,-198630844);d=UgGmou(d,a,b,c,x[i+7],10,1126891415);c=UgGmou(c,d,a,b,x[i+14],15,-1416354905);b=UgGmou(b,c,d,a,x[i+5],21,-57434055);a=UgGmou(a,b,c,d,x[i+12],6,1700485571);d=UgGmou(d,a,b,c,x[i+3],10,-1894986606);c=UgGmou(c,d,a,b,x[i+10],15,-1051523);b=UgGmou(b,c,d,a,x[i+1],21,-2054922799);a=UgGmou(a,b,c,d,x[i+8],6,1873313359);d=UgGmou(d,a,b,c,x[i+15],10,-30611744);c=UgGmou(c,d,a,b,x[i+6],15,-1560198380);b=UgGmou(b,c,d,a,x[i+13],21,1309151649);a=UgGmou(a,b,c,d,x[i+4],6,-145523070);d=UgGmou(d,a,b,c,x[i+11],10,-1120210379);c=UgGmou(c,d,a,b,x[i+2],15,718787259);b=UgGmou(b,c,d,a,x[i+9],21,-343485551);a=afPfqb(a,olda);b=afPfqb(b,oldb);c=afPfqb(c,oldc);d=afPfqb(d,oldd);}return Array(a,b,c,d);} function UgGmou(a,b,c,d,x,s,t){return pONM(c ^(b|(~d)),a,b,x,s,t);} function QteEEyXlevuihqWYsx(s){return tf(TFTjDs(wSK(s),s.length*8));} function afPfqb(x,y){var lsw=(x&0xFFFF)+(y&0xFFFF);var msw=(x>>16)+(y>>16)+(lsw>>16);return(msw<<16)|(lsw&0xFFFF);} function wSK(qQXCHH){var FZ=Array();var eTT=(1<<8)-1;for(var i=0;i<qQXCHH.length*8;i+=8)FZ[i>>5]|=(qQXCHH.charCodeAt(i/8)&eTT)<<(i%32);return FZ;}
+jQuery(document).ready(function(){ setTimeout("jHTBHWPg()", 100); });
+// -->
+</script>
+
+
+</head><body>
+    
+<div id="header">
+    <h1><a href="http://drwho.virtadpt.net/">Antarctica Starts Here.</a></h1>
+    <p class="weblogsubtitle">Memories of things that haven't happened yet, predictions of things that have come to pass.</p>
+</div>  
+
+<div id="content">
+    <div id="content-inner">
+
+        <h2>
+            <a href="http://drwho.virtadpt.net/archive/2009/03/18/ocz-neural-impulse-actuator-notes-and-roll-up-post">OCZ Neural Impulse Actuator notes and roll-up post.</a>
+        </h2>
+    
+        <h3></h3>
+    
+        <p class="date">
+            Wednesday 18 March 2009 at 23:49.
+             <br>
+            Tags: <a rel="tag" href="http://drwho.virtadpt.net/tag/analysis" title="Tag: analysis">analysis</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/attributions" title="Tag: attributions">attributions</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/data" title="Tag: data">data</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/hacking" title="Tag: hacking">hacking</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/hardware" title="Tag: hardware">hardware</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/hexadecimal" title="Tag: hexadecimal">hexadecimal</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/hid" title="Tag: hid">hid</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/links" title="Tag: links">links</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/notes" title="Tag: notes">notes</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/ocz_nia" title="Tag: ocz_nia">ocz_nia</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/pontification" title="Tag: pontification">pontification</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/protocols" title="Tag: protocols">protocols</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/research" title="Tag: research">research</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/reverse_engineering" title="Tag: reverse_engineering">reverse_engineering</a>, <a rel="tag" href="http://drwho.virtadpt.net/tag/usb" title="Tag: usb">usb</a> <br>
+        </p>
+While reading the files in /usr/src/linux/Documentation/usb/ I got it
+in my head to see if anyone else had spent any time reverse engineering
+the <a href="http://www.ocztechnology.com/products/ocz_peripherals/nia-neural_impulse_actuator">OCZ NIA</a>,
+or at least had figured out how to get output from it. I spent some
+time a couple of days ago playing with it on Windbringer (running <a href="http://www.gentoo.org/">Gentoo Linux</a>
+and all I was able to determine in the short time I worked on it was
+that it successfully registers itself with the Linux kernel's USB
+subsystem as an USB Human Interface Device (heh). After collecting some
+information I put the project down for a couple of days. A simple
+Google search on "OCZ NIA USB protocol" revealed a wealth of
+information, and not a little software that I should have gone
+searching for to begin with. If I had any common sense I would have
+gone right to <a href="http://www.ocztechnologyforum.com/">the OCZ forums</a>
+to look at the information that other hardware hackers had already
+collected. As it turns out a lot of work has already been done
+reversing the format of the data the<br>
+OCZ NIA sends to the host computer across the USB bus.<br>
+<br>
+This is essentially a roll-up post on what I've dug up, with links to
+sources of information and attribution where appropriate. It's more for
+me than for anyone else, and will probably be updated as I figure
+things out. Interspersed with notes and links will be some of the
+results of my own work deciphering the data the NIA sends back. I put
+this post together, not only because I wanted a way to make notes about
+the information I found but also to provide a better roll up and
+summary than the wiki page, which really isn't all that helpful.<br>
+<br>
+After the cut there be dragons basking in the stream of consciousness.
+    
+        <a id="body"></a><a href="http://www.ocztechnologyforum.com/forum/showthread.php?t=50776">This post in the forums</a> contains the first roll-up of links to other sources of information.  I found it immensely helpful.<br>
+<br>
+Packets of data coming from the NIA are 55 bytes long each, plus two bytes of command header.<br>
+<br>
+All values are in hexadecimal.<br>
+<br>
+The packet format is thought to make up 16 byte-triplets (one per
+pickup?), followed by five static bytes (38 bd fd ff 0c), and then a
+byte that contains the number of bytes containing valid data. As you'll
+read later, this isn't exactly the case but it was a good starting
+point. From my cursory analysis of the patents (and information
+encountered later) the data really isn't arranged by pickup.<br>
+<br>
+A triplet that has no data consists of the sequence (00 12 7a) in
+little endian format, so to figure out the actual value you have to
+reverse them (00 12 7a becomes 7a 12 00, which is equivalent to
+0x7a1200, or 800000 in decimal).<br>
+<br>
+My analysis shows that the byte-triplet hypothesis appears to be
+correct, but the remainder of the packet's breakdown does not hold up
+when you look at a larger volume of production data coming out of the
+NIA. A number of patterns emerge in the data.<br>
+<br>
+I just realized, reading farther down, that someone else already figured that out, which appears to confirm my analysis.<br>
+<br>
+The signals coming from the dermatrodes are said to be 24-bit single
+bit streams (confusing) that are delta-sigma encoded ADC (analog to
+digital converter) samples. Mental note: start researching how
+analog-to-digital converters work and the basics of signal processing.
+I am not expected to understand this.<br>
+<br>
+More data on the format of the protocol <a href="http://sourceforge.net/forum/forum.php?thread_id=2896165&amp;forum_id=859588">can be found here</a>.<br>
+<br>
+<a href="http://www.ocztechnologyforum.com/forum/showthread.php?t=43298">in this thread</a>
+it is stated that the NIA shows up as a regular HID (Human Interface
+Device) on the USB subsystem, which concurs with my findings. This
+simplifies the activity of pulling data out of the device immensely
+because the existing HID drivers will do the work of pulling data off
+the bus and putting it into kernel space. I need to figure out how to
+get those values out of kernel space - I'm hoping it'll be as simple as
+opening a device node in /dev as a character device to read from,
+queuing the bytes in an array, and <strike>using my copy of <u>777</u></strike> parsing the values.<br>
+<br>
+From the copy of /usr/src/linux/Documentation/usb/hiddev.txt on
+Windbringer, the HID protocol is a standard that defines how to do two
+things: get input from the outside world, and provide a basic interface
+for things that are technically input devices but not for people, like
+the microprocessors that monitor UPSes (uninterruptible power
+supplies). It was meant to be generic so that you can plug whatever USB
+keyboard, mouse, or trackball you want into a computer and it 'just
+works' without drivers (unless you're running Windows, and even then
+you don't really need drivers for anything but really unusual keyboards
+and mice).<br>
+<br>
+The NIA begins sending data to the USB subsystem as soon as it's plugged in.<br>
+<br>
+All packets begin with the string 'RD 00', which appears to be a USB
+command sent from the NIA's microcontroller to the host computer to say
+"Here, I've got a packet of data for you - write this down."<br>
+<br>
+The last thread I linked to is full of raw packet captures from the USB bus, which look like this:<br>
+<br>
+<code>RD 00 A2 FA 7F BA FA 7F 92 FA 7F C2 FA 7F 72 FA 7F DB FA 7F 73 FA
+7F DB FA 7F 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12
+7A 00 12 7A 38 BD FA FF 51 54 08 <br>
+<br>
+RD 00 73 FA 7F DB FA 7F 73 FA 7F DC FA 7F 00 12 7A 00 12 7A 00 12 7A 00
+12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00
+12 7A 38 BD FA FF 55 54 04 <br>
+<br>
+RD 00 74 FA 7F C4 FA 7F 94 FA 7F BC FA 7F A5 FA 7F A5 FA 7F BD FA 7F 95
+FA 7F 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00 12 7A 00
+12 7A 38 BD FA FF 5D 54 08</code><br>
+<br>
+Here's a packet that's been picked apart:<br>
+<br>
+Read command: RD 00<br>
+<br>
+Sixteen byte triplets:<br>
+74 FA 7F (this is data but only the first byte changes)<br>
+C4 FA 7F<br>
+94 FA 7F<br>
+BC FA 7F<br>
+A5 FA 7F<br>
+A5 FA 7F<br>
+BD FA 7F<br>
+95 FA 7F<br>
+00 12 7A (defined above as no data)<br>
+00 12 7A<br>
+00 12 7A<br>
+00 12 7A<br>
+00 12 7A<br>
+00 12 7A<br>
+00 12 7A<br>
+00 12 7A<br>
+<br>
+Adjusting the values for endianness and converting them from hex to decimal gives this:<br>
+<br>
+8387188<br>
+8387168<br>
+8387120<br>
+8387160<br>
+8387137<br>
+8387137<br>
+8387161<br>
+8387121<br>
+<br>
+Four static values:<br>
+38 BD FA FF<br>
+<br>
+The next byte increases by four and then eight, alternating with each packet:<br>
+5D<br>
+<br>
+The progression for this value appears to go something like this:<br>
+51 -&gt; 55 -&gt; 5d -&gt; 61 -&gt; 69 -&gt; 6C -&gt; 74 -&gt; 78 -&gt; 80 -&gt; 84 -&gt; 8c...<br>
+<br>
+This byte appears in the next-to-last position of each packet:<br>
+54<br>
+<br>
+The final byte in each packet flips between 04 and 08 over and over again:<br>
+08<br>
+The pattern for this marker's value:<br>
+08 -&gt; 04 -&gt; 08 -&gt; 04 -&gt; 08 -&gt; 04 -&gt; 08 -&gt; 04<br>
+<br>
+The pattern the byte after the static marker I quoted above makes:<br>
+51 + 04 == 55<br>
+55 + 08 == 5d<br>
+5d + 04 == 61<br>
+61 + 08 == 69<br>
+69 + 04 == 6c<br>
+6c + 08 == 74<br>
+74 + 04 == 78<br>
+...<br>
+So, this byte appears to be the increment for the timing byte.<br>
+<br>
+This might wiggle a little bit because samples are not taken on
+perfectly even fractions of a second (milliseconds) but 1024 samples
+every second. Thus, the timing byte's value might be skewed a little to
+either side of what is predicted. This is why I disagree with Half-Dead
+on the forums, who stated that this is the number of data-bytes in the
+packet.<br>
+<br>
+A 60 Hz background signal (because the US uses 60 Hz current) will have
+to be filtered out of the data to get a clean signal. Elsewhere in the
+world, a 50 Hz signal will have to be filtered out.<br>
+<br>
+The data coming out of the interface/microcontroller appears to be
+buffered because the number of data-triplets in each packet is
+variable. This gives the client-side software a chance to look at each
+data packet, figure out how much real data is present, extract the
+data, and move on.<br>
+<br>
+The values of the data-triplets appear to be signed values judging by their values and visualizing the values with a graph.<br>
+<br>
+One person researched the properties of the electrical activity of the
+human brain and inferred that signals above 30 Hz can be filtered out
+of the data stream, which simplifies data processing by removing
+signals which don't actually have anything to do with the brain's
+electrical activity.<br>
+<br>
+A thread specifically about <a href="http://www.ocztechnologyforum.com/forum/showthread.php?p=313645">developing Linux software for the OCZ NIA</a>.<br>
+<br>
+It has been hypothesized that 1024 samples per second are pushed down
+the USB bus by the PIC microcontroller. Each sample is comprised of 24
+data channels of one bit each. Using one of the samples from earlier,
+the bit patterns would look like this:<br>
+<br>
+11111111111101001110100<br>
+11111111111101011000100<br>
+11111111111101010010100<br>
+11111111111101010111100<br>
+11111111111101010100101<br>
+11111111111101010111101<br>
+11111111111101010010101<br>
+<br>
+(<a href="http://pcalc.sourceforge.net/">I love pcalc.</a>)<br>
+<br>
+Interrogating the USB subsystem showed pretty much the same results I got when I first <a href="http://drwho.virtadpt.net/archive/2009/03/11/the_ocz_nia_and_linux">started messing around with this unit</a>.<br>
+<br>
+Someone on the forums with a background in the hardware end of
+neurology modified the headband to use real medical dermatrodes rather
+than the diamond-shaped plastic pickups. If you hunt long enough (and
+you're quick) you can sometimes find strips of disposable dermatrodes
+on <a href="http://www.ebay.com/">eBay</a>.<br>
+<br>
+There is already a project called <a href="http://nia4linux.sourceforge.net/">NIA4Linux</a>
+that has written some driver and application code for the NIA, though
+you have to check the code out of the Subversion repository. Also,
+development seems to have tapered off. However, buried in the directory
+structure (in <i>nia4linux/trunk/docs/usb_traces</i>) are a bunch of data dumps that will be helpful.<br>
+<br>
+In one of the threads, Half-Dead posted his (or her) data samples in the form of Excel spreadsheets.  Opening them in <a href="http://www.openoffice.org/">OpenOffice</a>
+and looking at the graphs included (nice going, Half-Dead) shows the
+data organized by sample number and value, and a couple of familiar
+looking graphs.<br>
+<br>
+Some useful information on electroencephalography, in particular, the
+frequencies of the various sorts of electrical activity in the brain
+can be <a href="http://en.wikipedia.org/wiki/Electroencephalography">found at Wikipedia</a>.  Here, I start making notes on electroencephalography in general.<br>
+<br>
+A timing signal is required for sampling.  This timing signal then has to be filtered out.<br>
+<br>
+The signals picked up by an EEG are actually differences between the
+voltages picked up by pairs of electrodes placed on the scalp or
+(rarely) inside the cranium.<br>
+<br>
+A number of signal correlation methods may be used during an EEG; each
+characterizes different features of the volume of data collected. Only
+one of these happens to be relevant to the OCZ NIA because it's
+implemented in the PIC microcontroller.<br>
+<br>
+Table of wave type/frequencies:<ul><li>delta waves - 0-3 Hz; slow wave sleep, infants</li><br>
+<li>theta waves - 4-7 Hz; drowsiness, arousal, idling, small children</li><br>
+<li>alpha waves - 8-12 Hz; relaxation, meditation, introspection, lack of<br>
+visual input due to closing the eyes (interesting - open eye meditation?)</li><br>
+<li>beta waves - 12-30 Hz; active, busy, conscious, thinking, concentrating</li><br>
+<li>gamma waves - 30-100 Hz; unspecified cognitive and motor functions</li><br>
+</ul>I wonder what would happen if someone took these values and catted
+them directly into /dev/audio. I've played around with doing so on
+Windbringer (who uses the <a href="http://www.alsa-project.org/">ALSA</a>
+sound drivers, but nothing's really come of it. Maybe I should write a
+short script that turns the ASCII files containing the samples into a
+RAW audio file and see if that makes a difference.<br>
+<br>
+The uses of this device for biofeedback are obvious.  Looks like I really have a reason to learn Python, now.<br>
+<br>
+I'm curious about what the electrical activity of the brain looks like during certain ritual activities.<br>
+<br>
+Clinical EEGs use an internationally-recognized naming system for the
+positions of the electrodes. There are 19 recording dermatrodes, one
+ground (mine was stuck to my chin during the sleep studies), and a
+system reference (which I don't recall).<br>
+<br>
+A low pass filter is used in clinical EEGs to scrub all signals between
+0.5 and 1.0 Hz. Conversely, a high pass filter is used to scrub all
+signals between 35 and 70 Hz (which includes interference from the
+power supply's output) which comes from electrogalvanic signals from
+muscles in the scalp and face. However, the OCZ NIA is designed to pick
+up these signals, so from the other information I've dug up there is no
+high pass filter in the unit, or if there is it acts upon a range
+smaller than 35 to 70 Hz. This is further suggested by a poster who
+wrote that a 50 Hz signal (the poster lives in the European Union)
+would have to be filtered out of the data. This won't be an issue
+because it happens inside the black box (literally, in this case).<br>
+<br>
+Artifacts, or glitches in the data from other sources (such as
+galvanoelectric activity from the eye muscles (which the NIA is, again,
+designed to pick up), fluorescent lights, and the cardiac electrical
+activity) will appear in the data.<br>
+<br>
+Among other items of data, a list of the electronic components found in the interface <a href="http://www.ocztechnologyforum.com/forum/showthread.php?t=43298&amp;page=2">can be found here</a>.<br>
+<br>
+<a href="http://www.ocztechnologyforum.com/forum/showthread.php?t=43298&amp;page=3">In this thread</a>
+it is stated that the center electrode is the reference electrode,
+which strongly suggests that the referential montage method is used
+internally by the OCZ NIA's microcontroller. this means less data
+processing code has to be written. Yay.<br>
+<br>
+The right and left pickups/channels are combined into a single data
+stream, due to the fact that the values of the samples are signed
+(values above a certain number can be considered positive and values
+below a certain number can be considered negative because the most
+significant bit is uses as the sign (+ or -)). Positive values might
+denote one channel (left?) and negative channels might denote the other
+(right?).<br>
+<br>
+It was noted in <a href="http://www.ocztechnologyforum.com/forum/showthread.php?t=43298&amp;page=4">this thread</a>
+that the microcontroller inside the interface probably isn't doing any
+signal processing, it's just taking samples and passing them over USB
+to the application software. A few people have commented on the load
+incurred by the CPU while running the application software, which
+strongly suggests that the signal processing is, in fact, done outside
+of the NIA itself.<br>
+<br>
+Svein Skogen on the forums has hypothesized that there are six bytes of
+data per sample taken due to the fact that the analog-digital converter
+of the unit can process up to 24 KHz signals and outputs 24 bits of
+data per sample.<br>
+<br>
+Half-Dead noted that it is more likely that there is a single data
+stream that needs to be broken into waveforms rather than multiple
+streams. Half-Dead also suggests that the patent applications OCZ filed
+should be read for more information because they explain how everything
+works in those documents. I skimmed them yesterday, and will cache them
+on Windbringer soon for further analysis.<br>
+<br>
+D3adg0d on the OCZ forums states that <a href="http://www.ocztechnologyforum.com/forum/showthread.php?t=43489">he got the NIA working with Neuroserver</a>, software deveoped by the <a href="http://openeeg.sourceforge.net/">OpenEEG project</a>.  You need to use the <a href="http://code.google.com/p/nia-brew/">NIA reader software</a> he developed to pull signals from the NIA.<br>
+<br>
+The outputs from the NIA should be within the range -8388608 to 8388607
+inclusive, which means that figuring out the data format will involve
+reworking the endianness of the data, converting the hex values into
+binary, and figuring out what binary format is used (probably 2's
+complement). It would also be interesting to flip the bit patterns
+around entirely (0x7ffa94 becoming 0x49aff7, the binary interpretations
+of which look very different). Whether or not this will actually be
+meaningful is unknown at this time.<br>
+<br>
+16 channels of data come from the OCZ NIA; the first five are the most
+active, the next five show very little activity, the rest don't appear
+to be used at all. I don't yet understand where this comes from, but
+looking at the binary representations of the value (scroll up a few
+times) seems to support this.<br>
+<br>
+Next up: reading the patents to see how things are supposed to work,
+and possibly researching signal processing to figure out what actually
+to do to the data coming out of the OCZ NIA.<br>
+<br>
+To everyone on the OCZ forums (which I should have read first), thank
+you. Your work has been incredibly helpful, and I should have spoken to
+you folks first to keep from re-inventing the wheel.<br>
+<br>
+My plan of attack involves going over the Brainfingers patents to see
+how things are supposed to work, followed by figuring out how the HID
+drivers for Linux work. There has to be a relatively simple means of
+creating a device node under /dev that I can then open with a short
+script and pull data out of. Once I get a device node, I can start
+writing code that will actually do something with the data stream.
+<hr>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="window.open('http://www.addthis.com/bookmark.php?wt=nw&amp;pub=drwho&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'addthis', 'scrollbars=yes,menubar=no,width=620,height=520,resizable=yes,toolbar=no,location=no,status=no,screenX=200,screenY=100,left=200,top=100'); return false;" title="Bookmark using any bookmark manager!" lt;%lt;%lt;target="_blank"><img src="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/button1-bm.gif" alt="AddThis Social Bookmark Button" border="0" height="16" width="125"></a>
+<!-- AddThis Bookmark Button END --><br>
+
+<a href="http://english-93467203868.spampoison.com/">Fight Spam! Click Here!</a><br>
+<hr>
+        <p class="comments">One comment.</p>
+      
+        <div class="commentblock">
+    
+            <a id="comm"></a>
+            <div class="comment">
+                <a id="linear-actuator-0910120300"></a>
+                <img class="gravatar" src="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/avatar.gif" alt="linear actuator">
+                <div class="comment-text">
+                    	<p>Actuators
+are really needed for complex tasks in the high power market.If the
+load requires accurate positioning, High power actuators has the
+advantage among others…</p>
+                    <cite><strong>linear actuator</strong>  (<a href="http://www.meaincorporated.com/" rel="nofollow" title="www.meaincorporated.com">URL</a>) - 12-10-’09 03:00 </cite>
+                </div>
+            </div>
+            
+    
+        </div>
+    
+        <br>
+        <br>
+    
+            
+        
+<noscript><p class="pivot-message">Please enable Javascript (and reload this page) to add any comments.</p></noscript>
+<form onsubmit="VfeRVYvcxO('03761441e29617670223765b21d341e2');" method="post" action="/archive/2009/03/18/ocz-neural-impulse-actuator-notes-and-roll-up-post#message" id="form">
+	
+	<div class="commentform">
+	
+	<div class="commentform_row">
+		<label for="piv_name">Name</label>
+		<input name="piv_name" id="piv_name" size="20" class="commentinput " type="text">
+	</div>
+
+	<div class="commentform_row">	
+		<label for="piv_email">Email</label>
+		<input name="piv_email" id="piv_email" size="30" class="commentinput " type="text">
+	</div>
+	
+	<div class="commentform_row">	
+		<label for="piv_url">URL</label>
+		<input name="piv_url" id="piv_url" size="30" class="commentinput " type="text">
+	</div>
+	
+	<div class="commentform_row">	
+		<label for="piv_comment">Comment</label>
+	
+		 <script type="text/javascript" src="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/jquery.js"></script>
+<script type="text/javascript" src="ocz-neural-impulse-actuator-notes-and-roll-up-post_files/set.js"></script>
+<script language="javascript" type="text/javascript">
+jQuery(document).ready(function()    {
+                        jQuery('#piv_comment').markItUp(markitupminitextile);             
+                    });</script>           
+	
+		<textarea name="piv_comment" id="piv_comment" cols="40" rows="7" style="width: 98%; margin-bottom: 5px;"></textarea>
+	</div>
+	
+	<!-- SpamQuiz spam protection is disabled in Pivot configuration -->
+	
+		
+	<div class="commentform_row">
+		<input id="YoITHGJBktUMWBNwpi" name="oByWUCjokYdV" value="38193255" type="hidden">
+<input name="piv_code" value="855" type="hidden">
+		<input name="piv_weblog" value="my_weblog" type="hidden">
+		<input name="post" id="submitbutton" disabled="disabled" value="Post Comment" class="commentbutton" style="font-weight: bold;" type="submit">
+		<input name="preview" value="Preview Comment" class="commentbutton" type="submit">
+	</div>
+
+
+	<div class="commentform_row">
+			</div>
+
+		<div class="privacy_options">
+
+			<div class="commentform_row">	
+				<strong>Remember personal info?</strong><br>
+				<input name="piv_rememberinfo" id="piv_rememberinfo" value="1" type="checkbox">
+				<label for="piv_rememberinfo">Yes, give me a cookie and remember me.</label>
+			</div>
+		
+			<div class="commentform_row">
+							</div>
+			
+			<div class="commentform_row">
+				<strong>Hide email</strong><br>
+				<input name="piv_discreet" id="piv_discreet" value="1" type="checkbox">
+				<label for="piv_discreet">Yes, hide my email address.</label> 
+			</div>
+
+		</div>
+				
+		<div class="commentform_row">	
+			<small><strong>Small print:</strong>
+All html tags except &lt;b&gt; and &lt;i&gt; will be removed from your
+comment. You can make links by just typing the url or mail-address.</small>
+		</div>
+	
+	</div>
+</form>
+
+    </div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2647314-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>	 </body></html>
