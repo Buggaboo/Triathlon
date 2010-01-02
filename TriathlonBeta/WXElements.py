@@ -97,9 +97,8 @@ class NoGLVisualizationPanel(wx.Panel):
         self.SetSizer(panelSizer)
         self.SetAutoLayout(1)
    def newReading(self):
-        a=0
+        pass
    def resetReading(self):
-        a=0
+        pass
    def setHistory(self, history):
-        a=0
-
+        pass
