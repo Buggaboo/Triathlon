@@ -85,10 +85,9 @@ class InputCondition():
                 return currentMousePos[1]-lastMousePos[1] > 2
             elif self.mouseMoveDir is "left":
                 return currentMousePos[0]-lastMousePos[0] < -2
-            else:
+            else: # right
                 return currentMousePos[0]-lastMousePos[0] > 2
-        else:
-            return wx.GetKeyState(self.code)
+        return wx.GetKeyState(self.code)
 
 inputConditions = {}
 for each in "1234567890abcdefghijklmnopqrstuvwxyz":
@@ -443,9 +442,7 @@ class SettingPanel(wx.Panel):
         elif (to>100):
                 to = 100
         if to<fr:
-            sw = fr
-            fr = to
-            to = sw
+            sw, fr, to = fr, to, sw
         elif to == fr:
             to = to+2
         if abs(to-fr)==1:

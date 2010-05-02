@@ -38,7 +38,8 @@ class NIA_Interface():
                 
     def open(self) :
         if not self.device:
-            print >> sys.stderr, "Error: could not find enough nia-devices"
+            from sys import stderr
+            stderr.write("Error: could not find enough nia-devices")
             sys.exit(0)
         try:
             self.handle = self.device.open()
@@ -49,14 +50,17 @@ class NIA_Interface():
             self.handle.setAltInterface(self.interface)
         except usb.USBError, err:
             #if False:            # usb debug info
-            print >> sys.stderr, err
+            from sys import stderr
+            stderr.write(err)
             
     def close(self):
         try:
             self.handle.reset()
             self.handle.releaseInterface()
         except Exception, err:
-            print >> sys.stderr, err
+           from sys import stderr
+           stderr.write(err)
+           
         self.handle, self.device = None, None
         
     def read(self):
@@ -64,7 +68,8 @@ class NIA_Interface():
             return self.handle.interruptRead(self.ENDPOINT1,self.PACKET_LENGTH,self.TIME_OUT)
         except usb.USBError, err:
             print "Pulled out the NIA device, accidentally?"
-            print >> sys.stderr, err
+            from sys import stderr
+            stderr.write(err)
             self.close()
             sys.exit(-1)
 
